@@ -5,8 +5,15 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JTTT"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="JTTT" Height="240" Width="320">
     <Grid>
-        
+        <TextBox x:Name="URL" HorizontalAlignment="Left" Height="20" Margin="60,20,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="Type url adress"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,20,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top"/>
+        <TextBox x:Name="Key" HorizontalAlignment="Left" Height="20" Margin="60,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TextChanged="TextBox_TextChanged" Text="Type key"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,50,0,0" TextWrapping="Wrap" Text="Key" VerticalAlignment="Top"/>
+        <TextBox x:Name="Key_Copy" HorizontalAlignment="Left" Height="20" Margin="60,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" TextChanged="TextBox_TextChanged" Text="Type Your e-mail adress"/>
+        <TextBlock HorizontalAlignment="Left" Margin="20,104,0,0" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Top"/>
+        <CheckBox Content="Send picture" HorizontalAlignment="Left" Margin="20,160,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
+        <Button Content="Push" HorizontalAlignment="Left" Margin="185,160,0,0" VerticalAlignment="Top" Width="75"/>
     </Grid>
 </Window>
