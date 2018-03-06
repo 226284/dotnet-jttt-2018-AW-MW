@@ -12,7 +12,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="37,25,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top"/>
         <TextBox x:Name="Key" HorizontalAlignment="Left" Height="20" Margin="77,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="Type key"/>
         <TextBlock HorizontalAlignment="Left" Margin="37,55,0,0" TextWrapping="Wrap" Text="Key" VerticalAlignment="Top"/>
-        <TextBox x:Name="Key_Copy" HorizontalAlignment="Left" Height="20" Margin="77,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="Type Your e-mail adress"/>
+        <TextBox x:Name="Mail" HorizontalAlignment="Left" Height="20" Margin="77,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="Type Your e-mail adress"/>
         <TextBlock HorizontalAlignment="Left" Margin="37,109,0,0" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Top"/>
         <CheckBox Content="Send picture" HorizontalAlignment="Left" Margin="37,165,0,0" VerticalAlignment="Top"/>
         <Button Content="Push" HorizontalAlignment="Left" Margin="202,165,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
