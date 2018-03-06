@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,6 +22,9 @@ namespace JTTT
     /// </summary>
     public partial class MainWindow : Window
     {
+        private string url;
+        private string reply;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -28,8 +32,33 @@ namespace JTTT
         
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            
 
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+            var URLBox = (TextBox)this.FindName("URL");
+            var KeyBox = (TextBox)this.FindName("Key");
+
+            var ErrorBlock = (TextBlock)this.FindName("error");
+
+            ErrorBlock.Text = "";
+            ErrorBlock.Visibility = Visibility.Hidden;
+
+            if (Uri.IsWellFormedUriString(URLBox.Text, UriKind.Absolute))
+            {
+                url = URLBox.Text;
+
+                WebClient client = new WebClient();
+                reply = client.DownloadString(url);
+            }
+            else
+            {
+                ErrorBlock.Text = "Check URL";
+                ErrorBlock.Visibility = Visibility.Visible;
+            }
 
         }
     }
