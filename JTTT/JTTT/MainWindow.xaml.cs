@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -41,10 +42,8 @@ namespace JTTT
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             
-
         }
-
-
+        
         bool IsValidEmail(string email)
         {
             try
@@ -60,7 +59,8 @@ namespace JTTT
 
         private void Button_Click(object sender, RoutedEventArgs ev)
         {
-            
+            Log file = new Log("err", "err", "err", "err");
+
             var URLBox = (TextBox)this.FindName("URL");
             var KeyBox = (TextBox)this.FindName("Key");
             var MailBox = (TextBox)this.FindName("Mail");
@@ -91,16 +91,15 @@ namespace JTTT
                     {
                         Text = @"Hey YourName,
 
-We found your key("+KeyBox.Text+") on site "+url+@"
+                        We found your key("+KeyBox.Text+") on site "+url+@"
 
-Have nice day!
+                        Have nice day!
 
--- JTTT
-"
+                        -- JTTT"
                     };
 
                     // create an image attachment for the file located at path
-                   /* var attachment = new MimePart("image", "gif")
+                    /* var attachment = new MimePart("image", "gif")
                     {
                         Content = new MimeContent(File.OpenRead(path), ContentEncoding.Default),
                         ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
@@ -112,7 +111,7 @@ Have nice day!
                     // image attachment
                     var multipart = new Multipart("mixed");
                     multipart.Add(body);
-                   // multipart.Add(attachment);
+                    // multipart.Add(attachment);
 
                     // now set the multipart/mixed as the message body
                     message.Body = multipart;
@@ -130,10 +129,21 @@ Have nice day!
                         mailClient.Disconnect(true);
                     }
 
-                } else
+                    DateTime date = DateTime.Now;
+
+                    file.date = date.ToString();
+                    file.word = KeyBox.Text;
+                    file.url = URLBox.Text;
+                    file.mail = toMailAdress;
+
+                    file.add();
+                }
+                else
                 {
                     ErrorBlock.Text = "Check Email";
                     ErrorBlock.Visibility = Visibility.Visible;
+
+                    file.fail_mail(MailBox.Text);
                 }
 
             }
@@ -141,6 +151,9 @@ Have nice day!
             {
                 ErrorBlock.Text = "Check URL";
                 ErrorBlock.Visibility = Visibility.Visible;
+
+                file.fail_url(URLBox.Text);
+
             }
 
         }
