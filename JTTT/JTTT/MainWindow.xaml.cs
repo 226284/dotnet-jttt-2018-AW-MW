@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 using HtmlAgilityPack;
 using MailKit.Net.Smtp;
 using MailKit.Security;
@@ -42,6 +43,34 @@ namespace JTTT
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var ErrorBlock = (TextBlock)this.FindName("error");
+            var url = "http://pepper.pl";
+            var web = new HtmlWeb();
+            var doc = web.Load(url);
+
+            var nodes = doc.DocumentNode.Descendants("img");
+
+            foreach (var i in nodes)
+            {
+                if (i.GetAttributeValue("alt", "").Contains("Xiaomi"))
+                {
+                    string pliczek = @"img.jpg";
+                    using (var client = new WebClient())
+                    {
+                        client.DownloadFile(i.GetAttributeValue("src", ""), pliczek);
+                    }
+
+                    ErrorBlock.Text = "Znaleziono i zapisano";
+                    ErrorBlock.Visibility = Visibility.Visible;
+                    break;
+                }
+                ErrorBlock.Text = "Nie znaleziono";
+                ErrorBlock.Visibility = Visibility.Visible;
+            }
         }
         
         bool IsValidEmail(string email)
