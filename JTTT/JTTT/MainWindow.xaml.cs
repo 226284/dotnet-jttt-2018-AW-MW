@@ -60,6 +60,7 @@ namespace JTTT
         private void Button_Click(object sender, RoutedEventArgs ev)
         {
             Log file = new Log("err", "err", "err", "err");
+            
 
             var URLBox = (TextBox)this.FindName("URL");
             var KeyBox = (TextBox)this.FindName("Key");
