@@ -71,6 +71,7 @@ namespace JTTT
             var URLBox = (TextBox)this.FindName("URL");
             var KeyBox = (TextBox)this.FindName("Key");
             var MailBox = (TextBox)this.FindName("Mail");
+            var pic = (CheckBox)this.FindName("pic");
 
             var ErrorBlock = (TextBlock)this.FindName("error");
 
@@ -120,6 +121,61 @@ namespace JTTT
                     multipart.Add(body);
                     // multipart.Add(attachment);
 
+                   
+
+                    
+
+                    DateTime date = DateTime.Now;
+
+                    file.date = date.ToString();
+                    file.word = KeyBox.Text;
+                    file.url = URLBox.Text;
+                    file.mail = toMailAdress;
+
+                    file.add();
+
+                    bool? flag = pic.IsChecked;
+
+                    if(flag == true)
+                    {
+                    
+                        var web = new HtmlWeb();
+                        var doc = web.Load(URLBox.Text);
+
+                        var nodes = doc.DocumentNode.Descendants("img");
+
+                        foreach (var i in nodes)
+                        {
+                            if (i.GetAttributeValue("alt", "").ToLower().Contains(KeyBox.Text.ToLower()))
+                            {
+                                string path = @"img.jpg";
+                                using (var client2 = new WebClient())
+                                {
+                                    client.DownloadFile(i.GetAttributeValue("src", ""), path);
+                                }
+
+                                var attachment = new MimePart("image", "jpg")
+                                {
+                                    Content = new MimeContent(File.OpenRead(path), ContentEncoding.Default),
+                                    ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                                    ContentTransferEncoding = ContentEncoding.Base64,
+                                    FileName = System.IO.Path.GetFileName(path)
+                                };
+
+                                multipart.Add(attachment);
+
+                                ErrorBlock.Text += "Found and send";
+                                ErrorBlock.Visibility = Visibility.Visible;
+                                break;
+                            }
+                            else
+                            {
+                                ErrorBlock.Text = "Not found";
+                                ErrorBlock.Visibility = Visibility.Visible;
+                            }
+                        }
+                    }
+
                     // now set the multipart/mixed as the message body
                     message.Body = multipart;
 
@@ -136,47 +192,6 @@ namespace JTTT
                         mailClient.Disconnect(true);
                     }
 
-                    DateTime date = DateTime.Now;
-
-                    file.date = date.ToString();
-                    file.word = KeyBox.Text;
-                    file.url = URLBox.Text;
-                    file.mail = toMailAdress;
-
-                    file.add();
-
-                    bool? flag = pic.IsChecked;
-
-                    if((bool)flag)
-                    {
-                        if (pic.IsEnabled)
-                        {
-
-                        }
-                        //var ErrorBlock = (TextBlock)this.FindName("error");
-                        var web = new HtmlWeb();
-                        var doc = web.Load(URLBox.Text);
-
-                        var nodes = doc.DocumentNode.Descendants("img");
-
-                        foreach (var i in nodes)
-                        {
-                            if (i.GetAttributeValue("alt", "").Contains(KeyBox.Text))
-                            {
-                                string pliczek = @"img.jpg";
-                                using (var client2 = new WebClient())
-                                {
-                                    client.DownloadFile(i.GetAttributeValue("src", ""), pliczek);
-                                }
-
-                                ErrorBlock.Text = "Found and send";
-                                ErrorBlock.Visibility = Visibility.Visible;
-                                break;
-                            }
-                            ErrorBlock.Text = "Not found";
-                            ErrorBlock.Visibility = Visibility.Visible;
-                        }
-                    }
                 }
                 else
                 {
