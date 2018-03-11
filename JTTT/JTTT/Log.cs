@@ -7,43 +7,32 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    public class Log
+    class Log :ILog
     {
-        public string date = "01-01-2000";
-        public string word = "none";
-        public string url = "http://demotywatory.pl";
-        public string mail = "wiemichal@wp.pl";
+        private DateTime date;
+        private string key;
+        private string url;
+        private string mail;
 
-        public Log(string d, string w, string u, string m)
+        public Log(string k, string u, string m)
         {
-            date = d;
-            word = w;
+            date = DateTime.Now;
+            key = k;
             url = u;
             mail = m;
         }
 
-        public void add()
+        public void Save(string name)
         {
-            using (StreamWriter sw = File.AppendText("log.txt"))
+            using (StreamWriter sw = File.AppendText(name))
             {
-                sw.WriteLine(date.ToString() + "  " + word + "  " + url + "  " + mail + Environment.NewLine);
+                sw.WriteLine(date.ToString() + "  " + key + "  " + url + "  " + mail + Environment.NewLine);
             }
         }
 
-        public void fail_url(string u)
+        public void Show()
         {
-            using (StreamWriter sw = File.AppendText("log.txt"))
-            {
-                sw.WriteLine(date.ToString() + "  Wrong URL:  " + u + Environment.NewLine);
-            }
-        }
-
-        public void fail_mail(string m)
-        {
-            using (StreamWriter sw = File.AppendText("log.txt"))
-            {
-                sw.WriteLine(date.ToString() + "  Wrong URL:  " + m + Environment.NewLine);
-            }
+            Console.WriteLine(date.ToString() + "  " + key + "  " + url + "  " + mail);
         }
     }
 }
