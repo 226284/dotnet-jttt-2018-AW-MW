@@ -76,7 +76,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="ILog.cs" />
-    <Compile Include="ICondiotion.cs" />
+    <Compile Include="ICondition.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -84,7 +84,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Condition.cs" />
+    <Compile Include="Check_Mail.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

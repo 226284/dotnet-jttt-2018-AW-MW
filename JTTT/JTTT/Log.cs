@@ -9,30 +9,30 @@ namespace JTTT
 {
     class Log :ILog
     {
-        private DateTime date;
-        private string key;
-        private string url;
-        private string mail;
+        private DateTime Date { get; set; }
+        private string Key { get; set; }
+        private string Url { get; set; }
+        private string Mail { get; set; }
 
-        public Log(string k, string u, string m)
+        public Log(string key, string url, string mail)
         {
-            date = DateTime.Now;
-            key = k;
-            url = u;
-            mail = m;
+            Date = DateTime.Now;
+            Key = key;
+            Url = url;
+            Mail = mail;
         }
 
         public void Save(string name)
         {
             using (StreamWriter sw = File.AppendText(name))
             {
-                sw.WriteLine(date.ToString() + "  " + key + "  " + url + "  " + mail + Environment.NewLine);
+                sw.WriteLine(Date.ToString() + "  " + Key + "  " + Url + "  " + Mail + Environment.NewLine);
             }
         }
 
         public void Show()
         {
-            Console.WriteLine(date.ToString() + "  " + key + "  " + url + "  " + mail);
+            Console.WriteLine(Date.ToString() + "  " + Key + "  " + Url + "  " + Mail);
         }
     }
 }
