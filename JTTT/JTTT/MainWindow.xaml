@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:JTTT"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="JTTT" Height="240" Width="320">
+        Title="JTTT" Height="240" Width="640">
     <Grid>
         <TextBox x:Name="URL" HorizontalAlignment="Left" Height="20" Margin="77,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="http://pepper.pl"/>
         <TextBlock HorizontalAlignment="Left" Margin="37,25,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top"/>
@@ -17,5 +17,20 @@
         <CheckBox x:Name="Pic" Content="Send picture" HorizontalAlignment="Left" Margin="37,165,0,0" VerticalAlignment="Top"/>
         <Button Content="Push" HorizontalAlignment="Left" Margin="202,165,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="77,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Visibility="Hidden"/>
+        <DockPanel Margin="366,49,37.333,139.667">
+            <Grid Width="230">
+                <StackPanel Orientation="Vertical">
+                    <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Stretch="Fill"/>
+                </StackPanel>
+            </Grid>
+        </DockPanel>
+        <ComboBox Selected="ComboBoxItem_Selected" x:Name="Action" SelectedIndex="0" HorizontalAlignment="Left" Margin="366,122,0,0" VerticalAlignment="Top" Width="230">
+            <ComboBoxItem Content="Send e-mail" HorizontalAlignment="Left" Width="228"/>
+        </ComboBox>
+        <Label Content="Condition" HorizontalAlignment="Left" Margin="366,19,0,0" VerticalAlignment="Top"/>
+        <Label Content="Action" HorizontalAlignment="Left" Margin="366,95,0,0" VerticalAlignment="Top"/>
+        <ComboBox Selected="ComboBoxItem_Selected2" x:Name="Action_Copy" SelectedIndex="0" HorizontalAlignment="Left" Margin="366,49,0,0" VerticalAlignment="Top" Width="230">
+            <ComboBoxItem Content="Check image description on site" HorizontalAlignment="Left" Width="228"/>
+        </ComboBox>
     </Grid>
 </Window>
