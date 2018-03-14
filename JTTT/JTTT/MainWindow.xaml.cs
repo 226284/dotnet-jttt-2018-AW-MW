@@ -164,7 +164,7 @@ namespace JTTT
 
                                 multipart.Add(attachment);
 
-                                ErrorBlock.Text += "Found and send";
+                                ErrorBlock.Text = "Found and send";
                                 ErrorBlock.Visibility = Visibility.Visible;
                                 break;
                             }
