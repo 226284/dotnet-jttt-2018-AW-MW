@@ -65,15 +65,14 @@ namespace JTTT
 
         private void Button_Click(object sender, RoutedEventArgs ev)
         {
-            Log file = new Log("err", "err", "err", "err");
-            
-
             var URLBox = (TextBox)this.FindName("URL");
             var KeyBox = (TextBox)this.FindName("Key");
             var MailBox = (TextBox)this.FindName("Mail");
-            var pic = (CheckBox)this.FindName("pic");
+            var PicBox = (CheckBox)this.FindName("Pic");
 
             var ErrorBlock = (TextBlock)this.FindName("error");
+
+            string file_name = "log.txt"; // log name
 
             ErrorBlock.Text = "";
             ErrorBlock.Visibility = Visibility.Hidden;
@@ -121,20 +120,10 @@ namespace JTTT
                     multipart.Add(body);
                     // multipart.Add(attachment);
 
-                   
+                    Log file = new Log(KeyBox.Text, URLBox.Text, MailBox.Text);
+                    file.Save(file_name);
 
-                    
-
-                    DateTime date = DateTime.Now;
-
-                    file.date = date.ToString();
-                    file.word = KeyBox.Text;
-                    file.url = URLBox.Text;
-                    file.mail = toMailAdress;
-
-                    file.add();
-
-                    bool? flag = pic.IsChecked;
+                    bool? flag = PicBox.IsChecked;
 
                     if(flag == true)
                     {
@@ -198,7 +187,8 @@ namespace JTTT
                     ErrorBlock.Text = "Check Email";
                     ErrorBlock.Visibility = Visibility.Visible;
 
-                    file.fail_mail(MailBox.Text);
+                    Log log = new Log(KeyBox.Text, URLBox.Text, "***Wrong URL: " + MailBox.Text);
+                    log.Save(file_name);
                 }
 
             }
@@ -207,7 +197,8 @@ namespace JTTT
                 ErrorBlock.Text = "Check URL";
                 ErrorBlock.Visibility = Visibility.Visible;
 
-                file.fail_url(URLBox.Text);
+                Log log = new Log(KeyBox.Text, "***Wrong URL:  " + URLBox.Text,  MailBox.Text);
+                log.Save(file_name);
 
             }
 
