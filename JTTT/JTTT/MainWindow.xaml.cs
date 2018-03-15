@@ -34,7 +34,15 @@ namespace JTTT
         private string fromMailAdress = "amadi@scz.pl";
 
         private string toMailAdress;
-        
+
+        private Dispatcher Dispatcher;
+
+        private TextBox URLBox;
+        private TextBox KeyBox;
+        private TextBox MailBox;
+
+        private CheckBox PicBox;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -42,7 +50,10 @@ namespace JTTT
         
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            
+             URLBox = (TextBox)this.FindName("URL");
+             KeyBox = (TextBox)this.FindName("Key");
+             MailBox = (TextBox)this.FindName("Mail");
+             PicBox = (CheckBox)this.FindName("Pic");
         }
         
         private void CheckBox_Clicked(object sender, RoutedEventArgs e)
@@ -65,10 +76,8 @@ namespace JTTT
 
         private void Button_Click(object sender, RoutedEventArgs ev)
         {
-            var URLBox = (TextBox)this.FindName("URL");
-            var KeyBox = (TextBox)this.FindName("Key");
-            var MailBox = (TextBox)this.FindName("Mail");
-            var PicBox = (CheckBox)this.FindName("Pic");
+            
+            
 
             var ErrorBlock = (TextBlock)this.FindName("error");
 
