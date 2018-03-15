@@ -6,31 +6,36 @@
         xmlns:local="clr-namespace:JTTT"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="JTTT" Height="240" Width="640">
+        Title="JTTT" Height="260" Width="640">
     <Grid>
-        <TextBox x:Name="URL" HorizontalAlignment="Left" Height="20" Margin="77,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="http://pepper.pl"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,25,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top"/>
-        <TextBox x:Name="Key" HorizontalAlignment="Left" Height="20" Margin="77,55,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="xiaomi"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,55,0,0" TextWrapping="Wrap" Text="Key" VerticalAlignment="Top"/>
-        <TextBox x:Name="Mail" HorizontalAlignment="Left" Height="20" Margin="77,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="wiemichal@wp.pl"/>
-        <TextBlock HorizontalAlignment="Left" Margin="37,109,0,0" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Top"/>
-        <CheckBox x:Name="Pic" Content="Send picture" HorizontalAlignment="Left" Margin="37,165,0,0" VerticalAlignment="Top"/>
-        <Button Content="Push" HorizontalAlignment="Left" Margin="202,165,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <TextBox x:Name="URL" HorizontalAlignment="Left" Height="20" Margin="77,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="http://pepper.pl"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,52,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top"/>
+        <TextBox x:Name="Key" HorizontalAlignment="Left" Height="20" Margin="77,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="xiaomi"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,82,0,0" TextWrapping="Wrap" Text="Key" VerticalAlignment="Top"/>
+        <TextBox x:Name="Mail" HorizontalAlignment="Left" Height="20" Margin="77,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="wiemichal@wp.pl"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,111,0,0" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Pic" Content="Send picture" HorizontalAlignment="Left" Margin="77,185,0,0" VerticalAlignment="Top"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="202,183,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="77,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Visibility="Hidden"/>
-        <DockPanel Margin="366,49,37.333,139.667">
+        <DockPanel Margin="77,21,326.6,167.4">
             <Grid Width="230">
                 <StackPanel Orientation="Vertical">
                     <Viewbox HorizontalAlignment="Left" VerticalAlignment="Top" Width="230" Stretch="Fill"/>
                 </StackPanel>
             </Grid>
         </DockPanel>
-        <ComboBox x:Name="Action" SelectedIndex="0" HorizontalAlignment="Left" Margin="366,122,0,0" VerticalAlignment="Top" Width="230">
+        <ComboBox x:Name="Action" SelectedIndex="0" HorizontalAlignment="Left" Margin="76,139,0,0" VerticalAlignment="Top" Width="201">
             <ComboBoxItem Content="Send e-mail" HorizontalAlignment="Left" Width="228"/>
         </ComboBox>
-        <Label Content="Condition" HorizontalAlignment="Left" Margin="366,19,0,0" VerticalAlignment="Top"/>
-        <Label Content="Action" HorizontalAlignment="Left" Margin="366,95,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="Action_Copy" SelectedIndex="0" HorizontalAlignment="Left" Margin="366,49,0,0" VerticalAlignment="Top" Width="230">
+        <Label Content="Condition" HorizontalAlignment="Left" Margin="16,19,0,0" VerticalAlignment="Top"/>
+        <Label Content="Action" HorizontalAlignment="Left" Margin="17,137,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="Action_Copy" SelectedIndex="0" HorizontalAlignment="Left" Margin="77,21,0,0" VerticalAlignment="Top" Width="200">
             <ComboBoxItem Content="Check image description on site" HorizontalAlignment="Left" Width="228"/>
         </ComboBox>
+        <ListBox HorizontalAlignment="Left" Height="142" Margin="327,21,0,0" VerticalAlignment="Top" Width="271" RenderTransformOrigin="0.26,-0.048"/>
+        <Button Content="Run!" HorizontalAlignment="Left" Margin="327,183,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click_1"/>
+        <Button Content="Serialize" HorizontalAlignment="Left" Margin="465,183,0,0" VerticalAlignment="Top" Width="64"/>
+        <Button Content="Clear" HorizontalAlignment="Left" Margin="396,183,0,0" VerticalAlignment="Top" Width="64"/>
+        <Button Content="Deserialize" HorizontalAlignment="Left" Margin="534,183,0,0" VerticalAlignment="Top" Width="64"/>
     </Grid>
 </Window>
