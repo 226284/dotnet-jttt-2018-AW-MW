@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Url
+    class Key
     {
-        private string address { get; set; }
+        private string name { get; set; }
     }
 }

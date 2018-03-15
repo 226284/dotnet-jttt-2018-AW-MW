@@ -8,5 +8,6 @@ namespace JTTT
 {
     class IUrl
     {
+
     }
 }
