@@ -17,5 +17,10 @@ namespace JTTT
         {
 
         }
+
+        public override string ToString()
+        {
+            return "Send nudes";
+        }
     }
 }

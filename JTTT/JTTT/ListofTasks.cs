@@ -15,6 +15,7 @@ namespace JTTT
         {
             listofTasks = new BindingList<Task>(); 
         }
+
         public void Add(Task task)
         {
             listofTasks.AllowNew = true;
@@ -22,6 +23,7 @@ namespace JTTT
             listofTasks.RaiseListChangedEvents = true;
             listofTasks.Add(task);
         }
+
         public void Clear()
         {
             listofTasks.AllowNew = false;
@@ -29,6 +31,7 @@ namespace JTTT
             listofTasks.RaiseListChangedEvents = true;
             listofTasks.Clear();
         }
+
         public BindingList<Task> All()
         {
             return this.listofTasks;
