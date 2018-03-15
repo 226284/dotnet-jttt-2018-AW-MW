@@ -121,6 +121,8 @@ namespace JTTT
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
             ListofTasks.Clear();
+            TaskBox.Items.Clear();
+            TaskBox.Items.Refresh();
         }
 
         private void Serialize_Click(object sender, RoutedEventArgs e)
