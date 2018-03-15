@@ -17,5 +17,9 @@ namespace JTTT
         {
             // checks if there is key on the site, downloads image from site
         }
+        public override string ToString()
+        {
+            return "Send Image";
+        }
     }
 }

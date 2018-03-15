@@ -24,13 +24,13 @@
                 </StackPanel>
             </Grid>
         </DockPanel>
-        <ComboBox x:Name="Action" SelectedIndex="0" HorizontalAlignment="Left" Margin="76,139,0,0" VerticalAlignment="Top" Width="201">
-            <ComboBoxItem Content="Send e-mail" HorizontalAlignment="Left" Width="228"/>
+        <ComboBox x:Name="ActionsComboBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="76,139,0,0" VerticalAlignment="Top" Width="201">
+          <!--  <ComboBoxItem Content="Send e-mail" HorizontalAlignment="Left" Width="228"/>-->
         </ComboBox>
         <Label Content="Condition" HorizontalAlignment="Left" Margin="16,19,0,0" VerticalAlignment="Top"/>
         <Label Content="Action" HorizontalAlignment="Left" Margin="17,137,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="Action_Copy" SelectedIndex="0" HorizontalAlignment="Left" Margin="77,21,0,0" VerticalAlignment="Top" Width="200">
-            <ComboBoxItem Content="Check image description on site" HorizontalAlignment="Left" Width="228"/>
+        <ComboBox x:Name="ConditionsComboBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="77,21,0,0" VerticalAlignment="Top" Width="200">
+            <!--<ComboBoxItem Content="Check image description on site" HorizontalAlignment="Left" Width="228"/>-->
         </ComboBox>
         <ListBox x:Name="TaskListBox"  HorizontalAlignment="Left" Height="142" Margin="327,21,0,0" VerticalAlignment="Top" Width="271" RenderTransformOrigin="0.26,-0.048"/>
         <Button Content="Run!" HorizontalAlignment="Left" Margin="327,183,0,0" VerticalAlignment="Top" Width="64" Click="Run_Click"/>

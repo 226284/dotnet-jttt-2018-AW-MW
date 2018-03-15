@@ -37,9 +37,17 @@ namespace JTTT
 
         private Dispatcher Dispatcher;
         private ListofTasks ListofTasks;
+
+        private List<Action> ListofActions;
+        private List<Condition> ListofConditions;
+
         private TextBox URLBox;
         private TextBox KeyBox;
         private TextBox MailBox;
+
+        private TextBlock ErrorBlock;
+
+        //private ComboBox ActionsComboBox;
 
         private ListBox TaskBox;
 
@@ -55,8 +63,24 @@ namespace JTTT
              URLBox = (TextBox)this.FindName("URL");
              KeyBox = (TextBox)this.FindName("Key");
              MailBox = (TextBox)this.FindName("Mail");
+
+             ErrorBlock = (TextBlock)this.FindName("error");
+
              PicBox = (CheckBox)this.FindName("Pic");
+
              TaskBox = (ListBox)this.FindName("TaskListBox");
+
+            ListofConditions = new List<Condition>();
+            ListofActions = new List<Action>();
+
+            /* Add all conditions */
+            ListofConditions.Add(new Condition_img(new JTTT.Key(), new Url("")));
+
+            /* Add all actions */
+            ListofActions.Add(new Action_img(new JTTT.Mail()));
+
+            ConditionsComboBox.ItemsSource = ListofConditions;
+            ActionsComboBox.ItemsSource = ListofActions;
 
             ListofTasks = new ListofTasks();
             Dispatcher = new Dispatcher();
@@ -73,25 +97,15 @@ namespace JTTT
             
         }
         
-        bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
 
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
-            
+            //var Task = new Task();
+
+            //ListofTasks.Add(Task);
             
 
-            var ErrorBlock = (TextBlock)this.FindName("error");
+            
 
             string file_name = "log.txt"; // log name
 
@@ -105,7 +119,7 @@ namespace JTTT
                 WebClient client = new WebClient();
                 reply = client.DownloadString(url);
 
-                if (IsValidEmail(MailBox.Text))
+                if (true)//IsValidEmail(MailBox.Text))
                 {
                     toMailAdress = MailBox.Text;
 
@@ -227,7 +241,7 @@ namespace JTTT
 
         private void Run_Click(object sender, RoutedEventArgs e)
         {
-
+            Dispatcher.Run();
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
