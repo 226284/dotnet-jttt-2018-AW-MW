@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Action: IAction
+    class Action_img: Action
     {
-        protected Mail Mail = new Mail();
-
-        public Action(Mail mail)
+        public Action_img(Mail mail) : base(mail)
         {
             Mail = mail;
         }
-        public virtual void Job()
+
+        public virtual void Job(string option)
         {
-            //send mail or something
+            // checks if there is key on the site, downloads image from site
         }
     }
 }

@@ -8,16 +8,16 @@ namespace JTTT
 {
     class Condition: ICondition
     {
-        private Key Key = new Key();
-        private Url Url = new Url();
+        protected Key Key;// = new Key();
+        protected Url Url;// = new Url();
      
         public Condition(Key key, Url url)
         {
             Key = key;
             Url = url;
         }
-
-        public void Check(string option)
+        
+        public virtual void Check(string option)
         {
             // checks if there is key on the site, downloads image from site
         }
