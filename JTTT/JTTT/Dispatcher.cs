@@ -6,8 +6,23 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Dispatcher
+    class Dispatcher : IDispatcher
     {
-        
+        private Action Action;
+        private Condition Condition;
+
+        private int actionID;
+        private int conditionID;
+
+        public Dispatcher(int _actionID, int _conditionID)
+        {
+            actionID = _actionID;
+            conditionID = _conditionID;
+        }
+
+        public bool Run()
+        {
+            return true;
+        }
     }
 }
