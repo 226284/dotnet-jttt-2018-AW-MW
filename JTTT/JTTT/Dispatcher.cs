@@ -6,12 +6,8 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Url
+    class Dispatcher
     {
-        public string address { get; set; }
-        public Url(string _address)
-        {
-            address = _address;
-        }
+        
     }
 }

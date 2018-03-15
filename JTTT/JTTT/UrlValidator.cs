@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Url
+    class UrlValidator
     {
-        public string address { get; set; }
-        public Url(string _address)
+        public bool isValid(Url url)
         {
-            address = _address;
+            return true;
         }
     }
 }
