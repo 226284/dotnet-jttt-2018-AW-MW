@@ -8,7 +8,7 @@ namespace JTTT
 {
     class Dispatcher : IDispatcher
     {
-        ListofTasks ListofTasks;
+        ListofTasks ListofTasks = new ListofTasks();
 
         private int actionID;
         private int conditionID;
