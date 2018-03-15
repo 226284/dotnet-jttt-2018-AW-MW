@@ -8,8 +8,7 @@ namespace JTTT
 {
     class Dispatcher : IDispatcher
     {
-        private Action Action;
-        private Condition Condition;
+        ListofTasks ListofTasks;
 
         private int actionID;
         private int conditionID;
