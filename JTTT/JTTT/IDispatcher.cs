@@ -8,6 +8,6 @@ namespace JTTT
 {
     interface IDispatcher
     {
-        void Run();
+        bool Run();
     }
 }
