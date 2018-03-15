@@ -77,6 +77,11 @@ namespace JTTT
             ErrorBlock.Text = "";
             ErrorBlock.Visibility = Visibility.Hidden;
 
+            var MailCheck = new Check_Mail(KeyBox.Text, URLBox.Text, MailBox.Text);
+
+           // MailCheck.Check();
+            //MailCheck.Job();
+
             if (Uri.IsWellFormedUriString(URLBox.Text, UriKind.Absolute))
             {
                 url = URLBox.Text;
@@ -91,9 +96,8 @@ namespace JTTT
                     var message = new MimeMessage();
                     message.From.Add(new MailboxAddress(fromMail, fromMailAdress));
                     message.To.Add(new MailboxAddress("YourName", toMailAdress));
-                    message.Subject = "Key found event!";
+                    message.Subject = "Key found!";
 
-                    // create our message text, just like before (except don't set it as the message.Body)
                     var body = new TextPart("plain")
                     {
                         Text = @"Hey YourName,
@@ -105,17 +109,6 @@ namespace JTTT
                         -- JTTT"
                     };
 
-                    // create an image attachment for the file located at path
-                    /* var attachment = new MimePart("image", "gif")
-                    {
-                        Content = new MimeContent(File.OpenRead(path), ContentEncoding.Default),
-                        ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
-                        ContentTransferEncoding = ContentEncoding.Base64,
-                        FileName = Path.GetFileName(path)
-                    };*/
-
-                    // now create the multipart/mixed container to hold the message text and the
-                    // image attachment
                     var multipart = new Multipart("mixed");
                     multipart.Add(body);
                     // multipart.Add(attachment);
@@ -174,7 +167,6 @@ namespace JTTT
 
                         mailClient.Connect("scz.pl", 587, SecureSocketOptions.Auto);
 
-                        ////Note: only needed if the SMTP server requires authentication
                         mailClient.Authenticate(fromMailAdress, "Amadeusz");
 
                         mailClient.Send(message);
