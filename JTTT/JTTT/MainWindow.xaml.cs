@@ -36,10 +36,12 @@ namespace JTTT
         private string toMailAdress;
 
         private Dispatcher Dispatcher;
-
+        private ListofTasks ListofTasks;
         private TextBox URLBox;
         private TextBox KeyBox;
         private TextBox MailBox;
+
+        private ListBox TaskBox;
 
         private CheckBox PicBox;
 
@@ -54,6 +56,12 @@ namespace JTTT
              KeyBox = (TextBox)this.FindName("Key");
              MailBox = (TextBox)this.FindName("Mail");
              PicBox = (CheckBox)this.FindName("Pic");
+             TaskBox = (ListBox)this.FindName("TaskListBox");
+
+            foreach (Task t in ListofTasks.All())
+            {
+                TaskBox.Items.Add(t.ToString());
+            }
         }
         
         private void CheckBox_Clicked(object sender, RoutedEventArgs e)
@@ -74,7 +82,7 @@ namespace JTTT
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs ev)
+        private void Add_Click(object sender, RoutedEventArgs ev)
         {
             
             
@@ -213,7 +221,22 @@ namespace JTTT
 
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Run_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Serialize_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Deserialize_Click(object sender, RoutedEventArgs e)
         {
 
         }

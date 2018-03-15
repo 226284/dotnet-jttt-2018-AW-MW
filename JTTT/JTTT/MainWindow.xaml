@@ -15,7 +15,7 @@
         <TextBox x:Name="Mail" HorizontalAlignment="Left" Height="20" Margin="77,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="wiemichal@wp.pl"/>
         <TextBlock HorizontalAlignment="Left" Margin="21,111,0,0" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Top"/>
         <CheckBox x:Name="Pic" Content="Send picture" HorizontalAlignment="Left" Margin="77,185,0,0" VerticalAlignment="Top"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="202,183,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="202,183,0,0" VerticalAlignment="Top" Width="75" Click="Add_Click"/>
         <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="77,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Visibility="Hidden"/>
         <DockPanel Margin="77,21,326.6,167.4">
             <Grid Width="230">
@@ -32,10 +32,10 @@
         <ComboBox x:Name="Action_Copy" SelectedIndex="0" HorizontalAlignment="Left" Margin="77,21,0,0" VerticalAlignment="Top" Width="200">
             <ComboBoxItem Content="Check image description on site" HorizontalAlignment="Left" Width="228"/>
         </ComboBox>
-        <ListBox HorizontalAlignment="Left" Height="142" Margin="327,21,0,0" VerticalAlignment="Top" Width="271" RenderTransformOrigin="0.26,-0.048"/>
-        <Button Content="Run!" HorizontalAlignment="Left" Margin="327,183,0,0" VerticalAlignment="Top" Width="64" Click="Button_Click_1"/>
-        <Button Content="Serialize" HorizontalAlignment="Left" Margin="465,183,0,0" VerticalAlignment="Top" Width="64"/>
-        <Button Content="Clear" HorizontalAlignment="Left" Margin="396,183,0,0" VerticalAlignment="Top" Width="64"/>
-        <Button Content="Deserialize" HorizontalAlignment="Left" Margin="534,183,0,0" VerticalAlignment="Top" Width="64"/>
+        <ListBox x:Name="TaskListBox"  HorizontalAlignment="Left" Height="142" Margin="327,21,0,0" VerticalAlignment="Top" Width="271" RenderTransformOrigin="0.26,-0.048"/>
+        <Button Content="Run!" HorizontalAlignment="Left" Margin="327,183,0,0" VerticalAlignment="Top" Width="64" Click="Run_Click"/>
+        <Button Content="Serialize" HorizontalAlignment="Left" Margin="465,183,0,0" VerticalAlignment="Top" Click="Serialize_Click" Width="64"/>
+        <Button Content="Clear" HorizontalAlignment="Left" Margin="396,183,0,0" VerticalAlignment="Top" Width="64" Click="Clear_Click"/>
+        <Button Content="Deserialize" HorizontalAlignment="Left" Margin="534,183,0,0" VerticalAlignment="Top" Click="Deserialize_Click" Width="64"/>
     </Grid>
 </Window>
