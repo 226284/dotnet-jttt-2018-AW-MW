@@ -67,12 +67,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dispatcher.cs" />
     <Compile Include="Action_img.cs" />
     <Compile Include="Condition_img.cs" />
     <Compile Include="IUrl.cs" />
     <Compile Include="Key.cs" />
     <Compile Include="Mail.cs" />
+    <Compile Include="MailValidator.cs" />
     <Compile Include="Url.cs" />
+    <Compile Include="UrlValidator.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
