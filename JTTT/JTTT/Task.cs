@@ -18,5 +18,10 @@ namespace JTTT
             Action = action;
             Condition = condition;
         }
+
+        public override string ToString()
+        {
+            return String.Format("If: {0} Then: {1}", Action.ToString(), Condition.ToString());
+        }
     }
 }
