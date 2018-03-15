@@ -88,7 +88,7 @@ namespace JTTT
 
             foreach (Task t in ListofTasks.All())
             {
-                TaskBox.Items.Add(t.ToString());
+                TaskBox.Items.Add(t);
             }
         }
         
@@ -100,13 +100,43 @@ namespace JTTT
 
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
-            //var Task = new Task();
+            var Log = new Log("","","");
+            var Task = new Task(ActionsComboBox.SelectedItem as Action, ConditionsComboBox.SelectedItem as Condition, Log);
 
-            //ListofTasks.Add(Task);
+            ListofTasks.Add(Task);
+            TaskBox.Items.Add(Task);
+            TaskBox.Items.Refresh();
+
             
 
             
 
+        }
+
+        private void Run_Click(object sender, RoutedEventArgs e)
+        {
+            Dispatcher.Run();
+        }
+
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            ListofTasks.Clear();
+        }
+
+        private void Serialize_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Deserialize_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+
+
+        private void smieci()
+        {
             string file_name = "log.txt"; // log name
 
             ErrorBlock.Text = "";
@@ -133,7 +163,7 @@ namespace JTTT
                     {
                         Text = @"Hey YourName,
 
-                        We found your key("+KeyBox.Text+") on site "+url+@"
+                        We found your key(" + KeyBox.Text + ") on site " + url + @"
 
                         Have nice day!
 
@@ -160,9 +190,9 @@ namespace JTTT
 
                     bool? flag = PicBox.IsChecked;
 
-                    if(flag == true)
+                    if (flag == true)
                     {
-                    
+
                         var web = new HtmlWeb();
                         var doc = web.Load(URLBox.Text);
 
@@ -232,31 +262,10 @@ namespace JTTT
                 ErrorBlock.Text = "Check URL";
                 ErrorBlock.Visibility = Visibility.Visible;
 
-                Log log = new Log(KeyBox.Text, "***Wrong URL:  " + URLBox.Text,  MailBox.Text);
+                Log log = new Log(KeyBox.Text, "***Wrong URL:  " + URLBox.Text, MailBox.Text);
                 log.Save(file_name);
 
             }
-
-        }
-
-        private void Run_Click(object sender, RoutedEventArgs e)
-        {
-            Dispatcher.Run();
-        }
-
-        private void Clear_Click(object sender, RoutedEventArgs e)
-        {
-            ListofTasks.Clear();
-        }
-
-        private void Serialize_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Deserialize_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
