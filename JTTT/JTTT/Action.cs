@@ -8,7 +8,7 @@ namespace JTTT
 {
     class Action: IAction
     {
-        protected Mail Mail = new Mail();
+        protected Mail Mail;
 
         public Action(Mail mail)
         {

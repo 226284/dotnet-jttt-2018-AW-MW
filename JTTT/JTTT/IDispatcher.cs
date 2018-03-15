@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Dispatcher
+    interface IDispatcher
     {
+        void Run();
     }
 }
