@@ -204,14 +204,5 @@ namespace JTTT
 
         }
         
-        private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ComboBoxItem_Selected2(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
