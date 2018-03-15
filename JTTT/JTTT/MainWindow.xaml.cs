@@ -58,6 +58,10 @@ namespace JTTT
              PicBox = (CheckBox)this.FindName("Pic");
              TaskBox = (ListBox)this.FindName("TaskListBox");
 
+            ListofTasks = new ListofTasks();
+            Dispatcher = new Dispatcher();
+
+
             foreach (Task t in ListofTasks.All())
             {
                 TaskBox.Items.Add(t.ToString());
@@ -228,7 +232,7 @@ namespace JTTT
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
-
+            ListofTasks.Clear();
         }
 
         private void Serialize_Click(object sender, RoutedEventArgs e)

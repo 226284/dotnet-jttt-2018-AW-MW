@@ -13,10 +13,9 @@ namespace JTTT
         private int actionID;
         private int conditionID;
 
-        public Dispatcher(int _actionID, int _conditionID)
+        public Dispatcher()
         {
-            actionID = _actionID;
-            conditionID = _conditionID;
+           
         }
 
         public bool Run()
