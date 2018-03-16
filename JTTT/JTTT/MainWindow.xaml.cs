@@ -131,12 +131,8 @@ namespace JTTT
         {
             // testing
             Serialize Serialize = new Serialize();
-
             Serialize.JsonSerialize(ListofTasks);
-            ListofTasks.Clear();
-            TaskBox.Items.Clear();
-            TaskBox.Items.Refresh();
-            
+
             //trzeba będzie przerobić poniższy kod
             JsonSerializer serializer = new JsonSerializer();
             serializer.Converters.Add(new JavaScriptDateTimeConverter());
@@ -146,9 +142,11 @@ namespace JTTT
             using (JsonWriter writer = new JsonTextWriter(sw))
             {
                 serializer.Serialize(writer, ListofTasks);
-
-                // {"ExpiryDate":new Date(1230375600000),"Price":0}
             }
+
+            ListofTasks.Clear();
+            TaskBox.Items.Clear();
+            TaskBox.Items.Refresh();
         }
 
         private void Deserialize_Click(object sender, RoutedEventArgs e)
