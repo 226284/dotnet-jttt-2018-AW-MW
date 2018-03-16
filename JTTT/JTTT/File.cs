@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,9 +10,11 @@ namespace JTTT
 {
     class File
     {
-        // methods for file 
+        public string Name { get; set; }
 
-        // void read ()
-        // void save ()
+        public File (string name)
+        {
+            Name = name;
+        }
     }
 }

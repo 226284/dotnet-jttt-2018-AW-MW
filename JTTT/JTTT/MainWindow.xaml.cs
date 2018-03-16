@@ -19,6 +19,8 @@ using HtmlAgilityPack;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace JTTT
 {
@@ -53,22 +55,24 @@ namespace JTTT
 
         private CheckBox PicBox;
 
+        private File file;
+
         public MainWindow()
         {
             InitializeComponent();
         }
-        
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-             URLBox = (TextBox)this.FindName("URL");
-             KeyBox = (TextBox)this.FindName("Key");
-             MailBox = (TextBox)this.FindName("Mail");
+            URLBox = (TextBox)this.FindName("URL");
+            KeyBox = (TextBox)this.FindName("Key");
+            MailBox = (TextBox)this.FindName("Mail");
 
-             ErrorBlock = (TextBlock)this.FindName("error");
+            ErrorBlock = (TextBlock)this.FindName("error");
 
-             PicBox = (CheckBox)this.FindName("Pic");
+            PicBox = (CheckBox)this.FindName("Pic");
 
-             TaskBox = (ListBox)this.FindName("TaskListBox");
+            TaskBox = (ListBox)this.FindName("TaskListBox");
 
             ListofConditions = new List<Condition>();
             ListofActions = new List<Action>();
@@ -90,26 +94,24 @@ namespace JTTT
             {
                 TaskBox.Items.Add(t);
             }
+
+            file = new File("jttt.log");
         }
-        
+
         private void CheckBox_Clicked(object sender, RoutedEventArgs e)
         {
-            
+
         }
-        
+
 
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
-            var Log = new Log("","","");
+            var Log = new Log("", "", "");
             var Task = new Task(ActionsComboBox.SelectedItem as Action, ConditionsComboBox.SelectedItem as Condition, Log);
 
             ListofTasks.Add(Task);
             TaskBox.Items.Add(Task);
             TaskBox.Items.Refresh();
-
-            
-
-            
 
         }
 
@@ -127,12 +129,42 @@ namespace JTTT
 
         private void Serialize_Click(object sender, RoutedEventArgs e)
         {
+            // testing
+            Serialize Serialize = new Serialize();
 
+            Serialize.JsonSerialize(ListofTasks);
+            ListofTasks.Clear();
+            TaskBox.Items.Clear();
+            TaskBox.Items.Refresh();
+            
+            //trzeba będzie przerobić poniższy kod
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.Converters.Add(new JavaScriptDateTimeConverter());
+            serializer.NullValueHandling = NullValueHandling.Ignore;
+
+            using (StreamWriter sw = new StreamWriter(file.Name))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, ListofTasks);
+
+                // {"ExpiryDate":new Date(1230375600000),"Price":0}
+            }
         }
 
         private void Deserialize_Click(object sender, RoutedEventArgs e)
         {
+            // testing
+            Deserialize Deserialize = new Deserialize();
 
+            try
+            {
+                Deserialize.JsonDeserialize("Tutaj trzeba będzie przekazać stringa z pliku");
+            }
+
+            catch
+            {
+                Console.WriteLine("You fucked up");
+            }
         }
 
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,12 @@ namespace JTTT
 {
     class Deserialize
     {
-        // job method
+        public ListofTasks JsonDeserialize(string input)
+        {
+            ListofTasks listofTasks = new ListofTasks();
+            listofTasks = JsonConvert.DeserializeObject<ListofTasks>(input);
+
+            return listofTasks;
+        }
     }
 }
