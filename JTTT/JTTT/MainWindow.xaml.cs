@@ -153,10 +153,22 @@ namespace JTTT
         {
             // testing
             Deserialize Deserialize = new Deserialize();
+            string text;
 
             try
             {
-                Deserialize.JsonDeserialize("Tutaj trzeba będzie przekazać stringa z pliku");
+                using (StreamReader sr = new StreamReader(file.Name))
+                {
+                    text = sr.ReadLine();
+                }
+
+                ListofTasks = Deserialize.JsonDeserialize(text);
+
+                foreach (Task t in ListofTasks.All())
+                {
+                    TaskBox.Items.Add(t);
+                }
+                TaskBox.Items.Refresh();
             }
 
             catch
