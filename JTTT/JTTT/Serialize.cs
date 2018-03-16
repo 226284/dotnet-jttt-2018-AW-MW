@@ -9,10 +9,12 @@ namespace JTTT
 {
     class Serialize
     {
-        public void JsonSerialize(ListofTasks listofTasks)
+        public string JsonSerialize(ListofTasks listofTasks)
         {
             string output = JsonConvert.SerializeObject(listofTasks);
             Console.WriteLine(output);
+
+            return output;
         }
     }
 }

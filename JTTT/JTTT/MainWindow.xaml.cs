@@ -131,7 +131,7 @@ namespace JTTT
         {
             // testing
             Serialize Serialize = new Serialize();
-            Serialize.JsonSerialize(ListofTasks);
+            //Serialize.JsonSerialize(ListofTasks);
 
             //trzeba będzie przerobić poniższy kod
             JsonSerializer serializer = new JsonSerializer();
@@ -139,9 +139,10 @@ namespace JTTT
             serializer.NullValueHandling = NullValueHandling.Ignore;
 
             using (StreamWriter sw = new StreamWriter(file.Name))
-            using (JsonWriter writer = new JsonTextWriter(sw))
+            //using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                serializer.Serialize(writer, ListofTasks);
+                //serializer.Serialize(writer, ListofTasks);
+                sw.WriteLine(Serialize.JsonSerialize(ListofTasks));
             }
 
             ListofTasks.Clear();
@@ -153,22 +154,20 @@ namespace JTTT
         {
             // testing
             Deserialize Deserialize = new Deserialize();
-            string text;
 
             try
             {
                 using (StreamReader sr = new StreamReader(file.Name))
                 {
-                    text = sr.ReadLine();
-                }
+                    var text = sr.ReadLine();
+                    ListofTasks = Deserialize.JsonDeserialize(text);
 
-                ListofTasks = Deserialize.JsonDeserialize(text);
-
-                foreach (Task t in ListofTasks.All())
-                {
-                    TaskBox.Items.Add(t);
+                    foreach (Task t in ListofTasks.All())
+                    {
+                        TaskBox.Items.Add(t);
+                    }
+                    TaskBox.Items.Refresh();
                 }
-                TaskBox.Items.Refresh();
             }
 
             catch
