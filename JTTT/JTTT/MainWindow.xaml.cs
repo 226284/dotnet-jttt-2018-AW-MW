@@ -212,7 +212,7 @@ namespace JTTT
 
                                 var attachment = new MimePart("image", "jpg")
                                 {
-                                    Content = new MimeContent(File.OpenRead(path), ContentEncoding.Default),
+                                    Content = new MimeContent(System.IO.File.OpenRead(path), ContentEncoding.Default),
                                     ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
                                     ContentTransferEncoding = ContentEncoding.Base64,
                                     FileName = System.IO.Path.GetFileName(path)

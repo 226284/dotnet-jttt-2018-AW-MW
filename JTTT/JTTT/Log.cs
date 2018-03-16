@@ -24,7 +24,7 @@ namespace JTTT
 
         public void Save(string name)
         {
-            using (StreamWriter sw = File.AppendText(name))
+            using (StreamWriter sw = System.IO.File.AppendText(name))
             {
                 sw.WriteLine(Date.ToString() + "  " + Key + "  " + Url + "  " + Mail + Environment.NewLine);
             }
