@@ -8,8 +8,8 @@ namespace JTTT
 {
     class Condition: ICondition
     {
-        protected Key Key;// = new Key();
-        protected Url Url;// = new Url();
+        public Key Key;// = new Key();
+        public Url Url;// = new Url();
      
         public Condition(Key key, Url url)
         {

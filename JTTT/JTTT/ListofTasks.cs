@@ -9,7 +9,7 @@ namespace JTTT
 {
     class ListofTasks: IListofTasks
     {
-        protected BindingList<Task> listofTasks;
+        public BindingList<Task> listofTasks;
 
         public ListofTasks()
         {

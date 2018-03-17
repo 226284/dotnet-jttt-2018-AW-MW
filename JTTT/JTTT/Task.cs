@@ -8,9 +8,9 @@ namespace JTTT
 {
     class Task
     {
-        protected Action Action;
-        protected Condition Condition;
-        protected Log Log;
+        public Action Action;
+        public Condition Condition;
+        public Log Log;
 
         public Task(Action action, Condition condition, Log log)
         {
@@ -21,7 +21,7 @@ namespace JTTT
 
         public override string ToString()
         {
-            return String.Format("If: {0} Then: {1}", Action.ToString(), Condition.ToString());
+            return String.Format("If: {0} Then: {1}", Condition.ToString(), Action.ToString());
         }
     }
 }

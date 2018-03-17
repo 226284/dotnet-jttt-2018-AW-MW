@@ -8,11 +8,11 @@ namespace JTTT
 {
     class Action: IAction
     {
-        protected Mail Mail;
+        public Mail Mail;
 
         public Action(Mail mail)
         {
-            Mail = mail;
+          //  Mail = mail;
         }
         public virtual void Job()
         {

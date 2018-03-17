@@ -20,7 +20,7 @@ namespace JTTT
 
         public override string ToString()
         {
-            return "Send nudes";
+            return "Check image description";
         }
     }
 }
