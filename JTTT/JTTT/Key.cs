@@ -8,6 +8,11 @@ namespace JTTT
 {
     class Key
     {
-        private string name { get; set; }
+        public string name { get; set; }
+
+        public Key(string _name)
+        {
+            name = _name;
+        }
     }
 }

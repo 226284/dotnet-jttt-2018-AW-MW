@@ -74,7 +74,7 @@ namespace JTTT
             ListofActions = new List<Action>();
 
             /* Add all conditions */
-            ListofConditions.Add(new Condition_img(new JTTT.Key(), new Url("")));
+            ListofConditions.Add(new Condition_img(new JTTT.Key(""), new Url("")));
 
             /* Add all actions */
             ListofActions.Add(new Action_img(new JTTT.Mail()));
@@ -101,7 +101,13 @@ namespace JTTT
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
             var Log = new Log("","","");
-            var Task = new Task(ActionsComboBox.SelectedItem as Action, ConditionsComboBox.SelectedItem as Condition, Log);
+            var Action = ActionsComboBox.SelectedItem as Action;
+            var Condition = ConditionsComboBox.SelectedItem as Condition;
+            
+            /* set parameters */
+            
+
+            var Task = new Task(Action, Condition , Log);
 
             ListofTasks.Add(Task);
             TaskBox.Items.Add(Task);
