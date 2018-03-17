@@ -10,16 +10,18 @@ namespace JTTT
     {
         ListofTasks ListofTasks = new ListofTasks();
 
-        private int actionID;
-        private int conditionID;
-
-        public Dispatcher()
+        public Dispatcher(ListofTasks _ListofTasks)
         {
-           
+            ListofTasks = _ListofTasks;
         }
 
         public bool Run()
         {
+            foreach (Task t in ListofTasks.All())
+            {
+                if (t.Condition.Check("")) t.Action.Job();
+                else return false;
+            }
             return true;
         }
     }

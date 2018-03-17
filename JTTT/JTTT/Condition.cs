@@ -17,9 +17,9 @@ namespace JTTT
             Url = url;
         }
         
-        public virtual void Check(string option)
+       public virtual bool Check(string option)
         {
-            // checks if there is key on the site, downloads image from site
+            return false;// checks if there is key on the site, downloads image from site
         }
 
     }

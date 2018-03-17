@@ -13,7 +13,7 @@ namespace JTTT
         {
             JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
             string output = JsonConvert.SerializeObject(listofTasks, settings);
-            Console.WriteLine(output);
+            //Console.WriteLine(output);
 
             return output;
         }

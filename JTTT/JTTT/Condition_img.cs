@@ -13,9 +13,9 @@ namespace JTTT
             Key = key;
             Url = url;
         }
-        public override void Check(string option)
+        public override bool Check(string option)
         {
-
+            return true;
         }
 
         public override string ToString()
