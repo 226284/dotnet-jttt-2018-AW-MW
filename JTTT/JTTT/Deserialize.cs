@@ -11,8 +11,11 @@ namespace JTTT
     {
         public ListofTasks JsonDeserialize(string input)
         {
-            Console.WriteLine(input);
-            return JsonConvert.DeserializeObject<ListofTasks>(input);
+            ListofTasks listofTasks = new ListofTasks();
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+            listofTasks = JsonConvert.DeserializeObject<ListofTasks>(input, settings);
+
+            return listofTasks;
         }
     }
 }

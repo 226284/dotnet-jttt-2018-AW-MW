@@ -11,7 +11,8 @@ namespace JTTT
     {
         public string JsonSerialize(ListofTasks listofTasks)
         {
-            string output = JsonConvert.SerializeObject(listofTasks);
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+            string output = JsonConvert.SerializeObject(listofTasks, settings);
             Console.WriteLine(output);
 
             return output;
