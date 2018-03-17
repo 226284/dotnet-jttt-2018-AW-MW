@@ -12,7 +12,8 @@ namespace JTTT
         public ListofTasks JsonDeserialize(string input)
         {
             ListofTasks listofTasks = new ListofTasks();
-            listofTasks = JsonConvert.DeserializeObject<ListofTasks>(input);
+            JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
+            listofTasks = JsonConvert.DeserializeObject<ListofTasks>(input, settings);
 
             return listofTasks;
         }
