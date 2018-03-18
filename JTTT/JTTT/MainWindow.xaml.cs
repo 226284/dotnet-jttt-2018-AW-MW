@@ -87,7 +87,7 @@ namespace JTTT
             ActionsComboBox.ItemsSource = ListofActions;
 
             ListofTasks = new ListofTasks();
-            Dispatcher = new Dispatcher();
+            //Dispatcher = new Dispatcher();
 
 
             foreach (Task t in ListofTasks.All())
@@ -106,8 +106,8 @@ namespace JTTT
 
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
-            var Log = new Log("", "", "");
-            var Task = new Task(ActionsComboBox.SelectedItem as Action, ConditionsComboBox.SelectedItem as Condition, Log);
+            //var Log = new Log("", "", "");
+            var Task = new Task(ActionsComboBox.SelectedItem as Action, ConditionsComboBox.SelectedItem as Condition, new Time());
 
             ListofTasks.Add(Task);
             TaskBox.Items.Add(Task);
