@@ -12,8 +12,8 @@ namespace JTTT
         {
             try
             {
-                var addr = new System.Net.Mail.MailAddress(mail.address);
-                return addr.Address == mail.address;
+                var addr = new System.Net.Mail.MailAddress(mail.Address);
+                return addr.Address == mail.Address;
             }
             catch
             {

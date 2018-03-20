@@ -7,32 +7,14 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Log :ILog
+    class Log //:ILog
     {
-        private DateTime Date { get; set; }
-        private string Key { get; set; }
-        private string Url { get; set; }
-        private string Mail { get; set; }
-
-        public Log(string key, string url, string mail)
+        public Log(Task task)
         {
-            Date = DateTime.Now;
-            Key = key;
-            Url = url;
-            Mail = mail;
-        }
-
-        public void Save(string name)
-        {
-            using (StreamWriter sw = System.IO.File.AppendText(name))
+            using (StreamWriter sw = System.IO.File.AppendText("log.txt"))
             {
-                sw.WriteLine(Date.ToString() + "  " + Key + "  " + Url + "  " + Mail + Environment.NewLine);
+                sw.WriteLine(task.Time.time + "  " + task.Condition.Key.Name + "  " + task.Condition.Url.address + "  " + task.Action.Mail.Address);
             }
-        }
-
-        public void Show()
-        {
-            Console.WriteLine(Date.ToString() + "  " + Key + "  " + Url + "  " + Mail);
         }
     }
 }

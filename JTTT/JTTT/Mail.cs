@@ -8,6 +8,11 @@ namespace JTTT
 {
     class Mail
     {
-        public string address { get; set; }
+        public string Address { get; set; }
+
+        public Mail(string address)
+        {
+            Address = address;
+        }
     }
 }

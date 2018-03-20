@@ -78,10 +78,10 @@ namespace JTTT
             ListofActions = new List<Action>();
 
             /* Add all conditions */
-            ListofConditions.Add(new Condition_img(new JTTT.Key(), new Url("")));
+            ListofConditions.Add(new Condition_img(new JTTT.Key(""), new Url("")));
 
             /* Add all actions */
-            ListofActions.Add(new Action_img(new JTTT.Mail()));
+            ListofActions.Add(new Action_img(new JTTT.Mail("")));
 
             ConditionsComboBox.ItemsSource = ListofConditions;
             ActionsComboBox.ItemsSource = ListofActions;
@@ -105,15 +105,19 @@ namespace JTTT
 
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
-            var Log = new Log("", "", "");
+            var C = ConditionsComboBox.SelectedItem as Condition;
             var A = ActionsComboBox.SelectedItem as Action;
-           // A.
-            var Task = new Task(A, ConditionsComboBox.SelectedItem as Condition, Log);
+
+            C.Key = new Key(KeyBox.Text);
+            C.Url = new Url(URLBox.Text);
+            A.Mail = new Mail(MailBox.Text);
+   
+            var Task = new Task(A, C, new Time());
+            Log Log = new Log(Task);
 
             ListofTasks.Add(Task);
             TaskBox.Items.Add(Task);
             TaskBox.Items.Refresh();
-
         }
 
         private void Run_Click(object sender, RoutedEventArgs e)
@@ -230,8 +234,8 @@ namespace JTTT
                     multipart.Add(body);
                     // multipart.Add(attachment);
 
-                    Log file = new Log(KeyBox.Text, URLBox.Text, MailBox.Text);
-                    file.Save(file_name);
+                    //Log file = new Log(KeyBox.Text, URLBox.Text, MailBox.Text);
+                    //file.Save(file_name);
 
                     bool? flag = PicBox.IsChecked;
 
@@ -297,8 +301,8 @@ namespace JTTT
                     ErrorBlock.Text = "Check Email";
                     ErrorBlock.Visibility = Visibility.Visible;
 
-                    Log log = new Log(KeyBox.Text, URLBox.Text, "***Wrong URL: " + MailBox.Text);
-                    log.Save(file_name);
+                    //Log log = new Log(KeyBox.Text, URLBox.Text, "***Wrong URL: " + MailBox.Text);
+                    //log.Save(file_name);
                 }
 
             }
@@ -307,8 +311,8 @@ namespace JTTT
                 ErrorBlock.Text = "Check URL";
                 ErrorBlock.Visibility = Visibility.Visible;
 
-                Log log = new Log(KeyBox.Text, "***Wrong URL:  " + URLBox.Text, MailBox.Text);
-                log.Save(file_name);
+                //Log log = new Log(KeyBox.Text, "***Wrong URL:  " + URLBox.Text, MailBox.Text);
+                //log.Save(file_name);
 
             }
         }
