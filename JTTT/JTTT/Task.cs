@@ -10,13 +10,15 @@ namespace JTTT
     {
         public Action Action;
         public Condition Condition;
-        public Log Log;
+        //public Log Log;
+        public Time Time;
 
-        public Task(Action action, Condition condition, Log log)
+        public Task(Action action, Condition condition, Time time)
         {
-            Log = log;
+            //Log = log;
             Action = action;
             Condition = condition;
+            Time = time;
         }
 
         public override string ToString()

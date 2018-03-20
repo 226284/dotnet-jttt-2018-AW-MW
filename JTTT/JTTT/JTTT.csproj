@@ -74,6 +74,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Action_img.cs" />
+    <Compile Include="Date.cs" />
     <Compile Include="Deserialize.cs" />
     <Compile Include="File.cs" />
     <Compile Include="Condition_img.cs" />
