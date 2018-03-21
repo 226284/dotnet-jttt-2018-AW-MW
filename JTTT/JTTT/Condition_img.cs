@@ -1,6 +1,8 @@
-﻿using System;
+﻿using HtmlAgilityPack;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,9 +17,33 @@ namespace JTTT
         }
         public override bool Check(string option)
         {
+            var UrlValidator = new UrlValidator();
 
+            if (UrlValidator.isValid(Url))
+            {
+                WebClient client = new WebClient();
+                var reply = client.DownloadString(Url.address);
 
-            return true;
+                var web = new HtmlWeb();
+                var doc = web.Load(Url.address);
+
+                var nodes = doc.DocumentNode.Descendants("img");
+
+                foreach (var i in nodes)
+                {
+                    if (i.GetAttributeValue("alt", "").ToLower().Contains(Key.Name.ToLower()))
+                    {
+                        string path = @"img.jpg";
+                        using (var client2 = new WebClient())
+                        {
+                            client.DownloadFile(i.GetAttributeValue("src", ""), path);
+                        }
+
+                        break;
+                    }
+                }
+            }
+            return true; //poprawić!
         }
 
         public override string ToString()
