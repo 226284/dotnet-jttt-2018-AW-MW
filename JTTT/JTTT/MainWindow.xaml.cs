@@ -111,13 +111,23 @@ namespace JTTT
             C.Key = new Key(KeyBox.Text);
             C.Url = new Url(URLBox.Text);
             A.Mail = new Mail(MailBox.Text);
-   
+
             var Task = new Task(A, C, new Time());
             Log Log = new Log(Task);
 
-            ListofTasks.Add(Task);
-            TaskBox.Items.Add(Task);
-            TaskBox.Items.Refresh();
+            UrlValidator urlValidator = new UrlValidator();
+            //urlValidator.isValid(C.Url);
+
+            MailValidator mailValidator = new MailValidator();
+            //mailValidator.isValid(A.Mail);
+
+            if (urlValidator.isValid(C.Url) && mailValidator.isValid(A.Mail))
+            {
+                ListofTasks.Add(Task);
+                TaskBox.Items.Add(Task);
+                TaskBox.Items.Refresh();
+            }
+                
         }
 
         private void Run_Click(object sender, RoutedEventArgs e)

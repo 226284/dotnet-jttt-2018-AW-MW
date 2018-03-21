@@ -14,7 +14,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="21,82,0,0" TextWrapping="Wrap" Text="Key" VerticalAlignment="Top"/>
         <TextBox x:Name="Mail" HorizontalAlignment="Left" Height="20" Margin="77,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="wiemichal@wp.pl"/>
         <TextBlock HorizontalAlignment="Left" Margin="21,111,0,0" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Top"/>
-        <CheckBox x:Name="Pic" Content="Send picture" HorizontalAlignment="Left" Margin="77,185,0,0" VerticalAlignment="Top"/>
         <Button Content="Add" HorizontalAlignment="Left" Margin="202,183,0,0" VerticalAlignment="Top" Width="75" Click="Add_Click"/>
         <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="77,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Visibility="Hidden"/>
         <DockPanel Margin="77,21,326.6,167.4">

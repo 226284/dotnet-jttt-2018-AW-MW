@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace JTTT
 {
@@ -17,6 +18,7 @@ namespace JTTT
             }
             catch
             {
+                MessageBox.Show("E-mail address is incorrect","Error");
                 return false;
             }
         }
