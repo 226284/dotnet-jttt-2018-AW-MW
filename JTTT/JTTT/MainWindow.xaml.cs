@@ -57,6 +57,9 @@ namespace JTTT
 
         private File file;
 
+        private UrlValidator urlValidator;
+        private MailValidator mailValidator;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -95,6 +98,9 @@ namespace JTTT
             }
 
             file = new File("jttt.log");
+
+            urlValidator = new UrlValidator();
+            mailValidator = new MailValidator();
         }
 
         private void CheckBox_Clicked(object sender, RoutedEventArgs e)
@@ -115,19 +121,13 @@ namespace JTTT
             var Task = new Task(A, C, new Time());
             Log Log = new Log(Task);
 
-            UrlValidator urlValidator = new UrlValidator();
-            //urlValidator.isValid(C.Url);
-
-            MailValidator mailValidator = new MailValidator();
-            //mailValidator.isValid(A.Mail);
-
             if (urlValidator.isValid(C.Url) && mailValidator.isValid(A.Mail))
             {
                 ListofTasks.Add(Task);
                 TaskBox.Items.Add(Task);
                 TaskBox.Items.Refresh();
             }
-                
+
         }
 
         private void Run_Click(object sender, RoutedEventArgs e)
@@ -145,19 +145,14 @@ namespace JTTT
 
         private void Serialize_Click(object sender, RoutedEventArgs e)
         {
-            // testing
             Serialize Serialize = new Serialize();
-            //Serialize.JsonSerialize(ListofTasks);
 
-            //trzeba będzie przerobić poniższy kod
             JsonSerializer serializer = new JsonSerializer();
             serializer.Converters.Add(new JavaScriptDateTimeConverter());
             serializer.NullValueHandling = NullValueHandling.Ignore;
 
             using (StreamWriter sw = new StreamWriter(file.Name))
-            //using (JsonWriter writer = new JsonTextWriter(sw))
             {
-                //serializer.Serialize(writer, ListofTasks);
                 sw.WriteLine(Serialize.JsonSerialize(ListofTasks));
             }
 
@@ -168,7 +163,6 @@ namespace JTTT
 
         private void Deserialize_Click(object sender, RoutedEventArgs e)
         {
-            // testing
             Deserialize Deserialize = new Deserialize();
 
             try

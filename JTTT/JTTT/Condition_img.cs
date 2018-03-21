@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Condition_img: Condition
+    class Condition_img : Condition
     {
         public Condition_img(Key key, Url url) : base(key, url)
         {
@@ -17,30 +17,25 @@ namespace JTTT
         }
         public override bool Check(string option)
         {
-            var UrlValidator = new UrlValidator();
+            WebClient client = new WebClient();
+            var reply = client.DownloadString(Url.address);
 
-            if (UrlValidator.isValid(Url))
+            var web = new HtmlWeb();
+            var doc = web.Load(Url.address);
+
+            var nodes = doc.DocumentNode.Descendants("img");
+
+            foreach (var i in nodes)
             {
-                WebClient client = new WebClient();
-                var reply = client.DownloadString(Url.address);
-
-                var web = new HtmlWeb();
-                var doc = web.Load(Url.address);
-
-                var nodes = doc.DocumentNode.Descendants("img");
-
-                foreach (var i in nodes)
+                if (i.GetAttributeValue("alt", "").ToLower().Contains(Key.Name.ToLower()))
                 {
-                    if (i.GetAttributeValue("alt", "").ToLower().Contains(Key.Name.ToLower()))
+                    string path = @"img.jpg";
+                    using (var client2 = new WebClient())
                     {
-                        string path = @"img.jpg";
-                        using (var client2 = new WebClient())
-                        {
-                            client.DownloadFile(i.GetAttributeValue("src", ""), path);
-                        }
-
-                        break;
+                        client.DownloadFile(i.GetAttributeValue("src", ""), path);
                     }
+
+                    break;
                 }
             }
             return true; //poprawić!

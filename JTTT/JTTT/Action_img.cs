@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Action_img: Action
+    class Action_img : Action
     {
         public Action_img(Mail mail) : base(mail)
         {
@@ -18,58 +18,51 @@ namespace JTTT
 
         public override void Job()
         {
-            var MailValidator = new MailValidator();
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("JTTT", fromMail));
+            message.To.Add(new MailboxAddress("YourName", Mail.Address));
+            message.Subject = "Key found event!";
 
-            if (MailValidator.isValid(Mail))
+            var body = new TextPart("plain")
             {
-                var message = new MimeMessage();
-                message.From.Add(new MailboxAddress("JTTT", fromMail));
-                message.To.Add(new MailboxAddress("YourName", Mail.Address));
-                message.Subject = "Key found event!";
-
-                var body = new TextPart("plain")
-                {
-                    Text = @"Hey YourName,
+                Text = @"Hey YourName,
 
                     We found your key!
 
                     Have nice day!
 
                     -- JTTT"
-                };
-                
-                var multipart = new Multipart("mixed");
-                multipart.Add(body);
-               
-                string path = @"img.jpg";
+            };
 
-                var attachment = new MimePart("image", "jpg")
-                {
-                    Content = new MimeContent(System.IO.File.OpenRead(path), ContentEncoding.Default),
-                    ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
-                    ContentTransferEncoding = ContentEncoding.Base64,
-                    FileName = System.IO.Path.GetFileName(path)
-                };
+            var multipart = new Multipart("mixed");
+            multipart.Add(body);
 
-                multipart.Add(attachment);
-                
-                message.Body = multipart;
+            string path = @"img.jpg";
 
-                using (var mailClient = new SmtpClient())
-                {
-                    mailClient.ServerCertificateValidationCallback = (s, c, h, e) => true;
+            var attachment = new MimePart("image", "jpg")
+            {
+                Content = new MimeContent(System.IO.File.OpenRead(path), ContentEncoding.Default),
+                ContentDisposition = new ContentDisposition(ContentDisposition.Attachment),
+                ContentTransferEncoding = ContentEncoding.Base64,
+                FileName = System.IO.Path.GetFileName(path)
+            };
 
-                    mailClient.Connect("scz.pl", 587, SecureSocketOptions.Auto);
+            multipart.Add(attachment);
 
-                    ////Note: only needed if the SMTP server requires authentication
-                    mailClient.Authenticate(fromMail, "Amadeusz");
+            message.Body = multipart;
 
-                    mailClient.Send(message);
-                    mailClient.Disconnect(true);
-                }
+            using (var mailClient = new SmtpClient())
+            {
+                mailClient.ServerCertificateValidationCallback = (s, c, h, e) => true;
 
+                mailClient.Connect("scz.pl", 587, SecureSocketOptions.Auto);
+
+                ////Note: only needed if the SMTP server requires authentication
+                mailClient.Authenticate(fromMail, "Amadeusz");
+
+                mailClient.Send(message);
+                mailClient.Disconnect(true);
             }
-            else { Console.WriteLine("Not valid"); } // tu trzeba coś zrobić
         }
 
         public override string ToString()
