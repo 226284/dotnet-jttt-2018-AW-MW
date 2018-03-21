@@ -11,15 +11,12 @@ namespace JTTT
     {
         public bool isValid(Url url)
         {
-            try
+            if (Uri.IsWellFormedUriString(url.address, UriKind.Absolute))
             {
-                return Uri.IsWellFormedUriString(url.address, UriKind.Absolute);
+                return true;
             }
-            catch
-            {
-                MessageBox.Show("URL adress is incorrect","Error");
-                return false;
-            }
+            MessageBox.Show("URL adress is incorrect", "Error");
+            return false;
         }
     }
 }
