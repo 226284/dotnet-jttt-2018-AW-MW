@@ -16,13 +16,12 @@ namespace JTTT
             Mail = mail;
         }
 
-        public virtual void Job(string option)
+        public override void Job()
         {
             var MailValidator = new MailValidator();
 
             if (MailValidator.isValid(Mail))
             {
-
                 var message = new MimeMessage();
                 message.From.Add(new MailboxAddress("JTTT", fromMail));
                 message.To.Add(new MailboxAddress("YourName", Mail.Address));
@@ -70,7 +69,7 @@ namespace JTTT
                 }
 
             }
-
+            else { Console.WriteLine("Not valid"); } // tu trzeba coś zrobić
         }
 
         public override string ToString()
