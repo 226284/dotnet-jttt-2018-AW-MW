@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace JTTT
 {
-    class Dispatcher : IDispatcher
+    public class Dispatcher : IDispatcher
     {
         ListofTasks ListofTasks = new ListofTasks();
 

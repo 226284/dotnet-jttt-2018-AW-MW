@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class File
+    public class File
     {
         public string Name { get; set; }
 

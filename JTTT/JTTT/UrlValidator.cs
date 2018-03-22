@@ -7,7 +7,7 @@ using System.Windows;
 
 namespace JTTT
 {
-    class UrlValidator
+    public class UrlValidator
     {
         public bool isValid(Url url)
         {

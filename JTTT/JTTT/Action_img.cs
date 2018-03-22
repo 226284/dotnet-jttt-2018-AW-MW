@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Action_img : Action
+    public class Action_img : Action
     {
         public Action_img(Mail mail) : base(mail)
         {

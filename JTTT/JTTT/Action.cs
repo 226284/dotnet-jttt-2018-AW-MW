@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Action : IAction
+    public class Action : IAction
     {
         public Mail Mail;
         protected string fromMail = "amadi@scz.pl";

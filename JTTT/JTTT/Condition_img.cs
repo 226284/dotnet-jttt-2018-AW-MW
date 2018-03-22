@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace JTTT
 {
-    class Condition_img : Condition
+    public class Condition_img : Condition
     {
         public Condition_img(Key key, Url url) : base(key, url)
         {

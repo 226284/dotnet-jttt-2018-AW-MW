@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Condition: ICondition
+    public class Condition: ICondition
     {
         public Key Key;// = new Key();
         public Url Url;// = new Url();

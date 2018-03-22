@@ -81,6 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Action_img.cs" />
+    <Compile Include="ListofTasksComplex.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="Deserialize.cs" />
     <Compile Include="File.cs" />

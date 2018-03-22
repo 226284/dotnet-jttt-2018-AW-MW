@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Key
+    public class Key
     {
         public string Name { get; set; }
 

@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class ListofTasks: IListofTasks
+    public class ListofTasks: IListofTasks
     {
-        public BindingList<Task> listofTasks;
+        public virtual int ListofTasksId { get; set; }
+        public virtual string Name { get; set; }
+        public virtual BindingList<Task> listofTasks { get; set; }
 
         public ListofTasks()
         {

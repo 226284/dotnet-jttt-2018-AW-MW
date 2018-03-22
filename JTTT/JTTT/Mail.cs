@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Mail
+    public class Mail
     {
         public string Address { get; set; }
 

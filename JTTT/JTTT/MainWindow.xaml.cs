@@ -134,6 +134,23 @@ namespace JTTT
         {
             Dispatcher = new Dispatcher(ListofTasks);
             Dispatcher.Run();
+
+            // TUTAJ ZNAJDUJE SIĘ TESTOWANIE MSSQL ****************************************************************
+            using (var db = new ListofTasksComplex())
+            {
+                var Listtt = new ListofTasks() { Name = "Długa lista" };
+                var Task = new Task(new Action(new JTTT.Mail("")), new Condition(new JTTT.Key(""), new Url("")), new Time()) { Name = "First" };
+                var Task2 = new Task(new Action(new JTTT.Mail("")), new Condition(new JTTT.Key(""), new Url("")), new Time()) { Name = "Second" };
+                var Task3 = new Task(new Action(new JTTT.Mail("")), new Condition(new JTTT.Key(""), new Url("")), new Time()) { Name = "Third" };
+
+                Listtt.listofTasks.Add(Task);
+                Listtt.listofTasks.Add(Task2);
+                Listtt.listofTasks.Add(Task2);
+
+                db.ListofTasks.Add(Listtt);
+                db.SaveChanges();
+            }
+
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Time
+    public class Time
     {
         public string time { get; set; }
 
