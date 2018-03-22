@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace JTTT
 {
@@ -20,8 +21,14 @@ namespace JTTT
             foreach (Task t in ListofTasks.All())
             {
                 if (t.Condition.Check("")) t.Action.Job();
-                else return false;
+                else
+                {
+                    MessageBox.Show("Error occured", "Error");
+                    return false;
+                }
+
             }
+            MessageBox.Show("Done succesfully", "Info");
             return true;
         }
     }

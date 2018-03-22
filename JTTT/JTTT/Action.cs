@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class Action: IAction
+    class Action : IAction
     {
         public Mail Mail;
         protected string fromMail = "amadi@scz.pl";
 
         public Action(Mail mail)
         {
-          //  Mail = mail;
+            //  Mail = mail;
         }
         public virtual void Job()
         {
