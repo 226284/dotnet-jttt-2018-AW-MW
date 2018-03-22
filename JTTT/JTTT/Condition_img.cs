@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace JTTT
 {
@@ -35,11 +36,13 @@ namespace JTTT
                     {
                         client.DownloadFile(i.GetAttributeValue("src", ""), path);
                     }
-
                     break;
+                    //return true; //poprawić!
                 }
             }
-            return true; //poprawić!
+            //MessageBox.Show("No img found on this site", "Warning");
+            //return false;
+            return true;
         }
 
         public override string ToString()
