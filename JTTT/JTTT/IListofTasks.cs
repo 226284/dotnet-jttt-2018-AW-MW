@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    interface IListofTasks
+    interface IListofTask
     {
         void Add(Task task);
         void Clear();

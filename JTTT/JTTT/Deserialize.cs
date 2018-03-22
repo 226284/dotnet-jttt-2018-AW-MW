@@ -9,13 +9,13 @@ namespace JTTT
 {
    public class Deserialize
     {
-        public ListofTasks JsonDeserialize(string input)
+        public ListofTask JsonDeserialize(string input)
         {
-            ListofTasks listofTasks = new ListofTasks();
+            ListofTask Tasks = new ListofTask();
             JsonSerializerSettings settings = new JsonSerializerSettings { TypeNameHandling = TypeNameHandling.All };
-            listofTasks = JsonConvert.DeserializeObject<ListofTasks>(input, settings);
+            Tasks = JsonConvert.DeserializeObject<ListofTask>(input, settings);
 
-            return listofTasks;
+            return Tasks;
         }
     }
 }

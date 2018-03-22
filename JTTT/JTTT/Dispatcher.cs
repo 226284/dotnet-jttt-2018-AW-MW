@@ -9,16 +9,16 @@ namespace JTTT
 {
     public class Dispatcher : IDispatcher
     {
-        ListofTasks ListofTasks = new ListofTasks();
+        ListofTask ListofTask = new ListofTask();
 
-        public Dispatcher(ListofTasks _ListofTasks)
+        public Dispatcher(ListofTask _ListofTask)
         {
-            ListofTasks = _ListofTasks;
+            ListofTask = _ListofTask;
         }
 
         public bool Run()
         {
-            foreach (Task t in ListofTasks.All())
+            foreach (Task t in ListofTask.All())
             {
                 if (t.Condition.Check("")) t.Action.Job();
                 else

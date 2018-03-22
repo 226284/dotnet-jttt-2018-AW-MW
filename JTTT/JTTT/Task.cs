@@ -9,12 +9,12 @@ namespace JTTT
     public class Task
     {
         public int TaskId { get; set; }
-        public virtual string Name { get; set; }
-        public virtual Action Action { get; set; }
-        public virtual Condition Condition { get; set; }
-        public virtual Time Time { get; set; }
+        public string Name { get; set; }
+        public Action Action { get; set; }
+        public Condition Condition { get; set; }
+        public Time Time { get; set; }
 
-        public virtual ListofTasks ListofTasks { get; set; }
+        public virtual ListofTask ListofTask { get; set; }
 
         public Task(Action action, Condition condition, Time time)
         {

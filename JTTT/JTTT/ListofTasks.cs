@@ -7,36 +7,36 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    public class ListofTasks: IListofTasks
+    public class ListofTask: IListofTask
     {
-        public virtual int ListofTasksId { get; set; }
-        public virtual string Name { get; set; }
-        public virtual BindingList<Task> listofTasks { get; set; }
+        public int ListofTaskId { get; set; }
+        public string Name { get; set; }
+        public virtual BindingList<Task> Tasks { get; set; }
 
-        public ListofTasks()
+        public ListofTask()
         {
-            listofTasks = new BindingList<Task>(); 
+            Tasks = new BindingList<Task>(); 
         }
 
         public void Add(Task task)
         {
-            listofTasks.AllowNew = true;
-            listofTasks.AllowRemove = false;
-            listofTasks.RaiseListChangedEvents = true;
-            listofTasks.Add(task);
+            Tasks.AllowNew = true;
+            Tasks.AllowRemove = false;
+            Tasks.RaiseListChangedEvents = true;
+            Tasks.Add(task);
         }
 
         public void Clear()
         {
-            listofTasks.AllowNew = false;
-            listofTasks.AllowRemove = true;
-            listofTasks.RaiseListChangedEvents = true;
-            listofTasks.Clear();
+            Tasks.AllowNew = false;
+            Tasks.AllowRemove = true;
+            Tasks.RaiseListChangedEvents = true;
+            Tasks.Clear();
         }
 
         public BindingList<Task> All()
         {
-            return this.listofTasks;
+            return this.Tasks;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace JTTT
         private string toMailAdress;
 
         private Dispatcher Dispatcher;
-        private ListofTasks ListofTasks;
+        private ListofTask ListofTask;
 
         private List<Action> ListofActions;
         private List<Condition> ListofConditions;
@@ -89,10 +89,10 @@ namespace JTTT
             ConditionsComboBox.ItemsSource = ListofConditions;
             ActionsComboBox.ItemsSource = ListofActions;
 
-            ListofTasks = new ListofTasks();
+            ListofTask = new ListofTask();
 
 
-            foreach (Task t in ListofTasks.All())
+            foreach (Task t in ListofTask.All())
             {
                 TaskBox.Items.Add(t);
             }
@@ -123,7 +123,7 @@ namespace JTTT
 
             if (urlValidator.isValid(C.Url) && mailValidator.isValid(A.Mail))
             {
-                ListofTasks.Add(Task);
+                ListofTask.Add(Task);
                 TaskBox.Items.Add(Task);
                 TaskBox.Items.Refresh();
             }
@@ -132,22 +132,22 @@ namespace JTTT
 
         private void Run_Click(object sender, RoutedEventArgs e)
         {
-            Dispatcher = new Dispatcher(ListofTasks);
+            Dispatcher = new Dispatcher(ListofTask);
             Dispatcher.Run();
 
             // TUTAJ ZNAJDUJE SIĘ TESTOWANIE MSSQL ****************************************************************
-            using (var db = new ListofTasksComplex())
+            using (var db = new ListofTaskComplex())
             {
-                var Listtt = new ListofTasks() { Name = "Długa lista" };
+                var List = new ListofTask() { Name = "Długa lista" };
                 var Task = new Task(new Action(new JTTT.Mail("")), new Condition(new JTTT.Key(""), new Url("")), new Time()) { Name = "First" };
                 var Task2 = new Task(new Action(new JTTT.Mail("")), new Condition(new JTTT.Key(""), new Url("")), new Time()) { Name = "Second" };
                 var Task3 = new Task(new Action(new JTTT.Mail("")), new Condition(new JTTT.Key(""), new Url("")), new Time()) { Name = "Third" };
 
-                Listtt.listofTasks.Add(Task);
-                Listtt.listofTasks.Add(Task2);
-                Listtt.listofTasks.Add(Task2);
+                List.Tasks.Add(Task);
+                List.Tasks.Add(Task2);
+                List.Tasks.Add(Task2);
 
-                db.ListofTasks.Add(Listtt);
+                db.ListofTasks.Add(List); //err: wartość nie może być zerowa
                 db.SaveChanges();
             }
 
@@ -155,7 +155,7 @@ namespace JTTT
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
-            ListofTasks.Clear();
+            ListofTask.Clear();
             TaskBox.Items.Clear();
             TaskBox.Items.Refresh();
         }
@@ -170,10 +170,10 @@ namespace JTTT
 
             using (StreamWriter sw = new StreamWriter(file.Name))
             {
-                sw.WriteLine(Serialize.JsonSerialize(ListofTasks));
+                sw.WriteLine(Serialize.JsonSerialize(ListofTask));
             }
 
-            ListofTasks.Clear();
+            ListofTask.Clear();
             TaskBox.Items.Clear();
             TaskBox.Items.Refresh();
         }
@@ -187,9 +187,9 @@ namespace JTTT
                 using (StreamReader sr = new StreamReader(file.Name))
                 {
                     var text = sr.ReadLine();
-                    ListofTasks = Deserialize.JsonDeserialize(text);
+                    ListofTask = Deserialize.JsonDeserialize(text);
 
-                    foreach (Task t in ListofTasks.All())
+                    foreach (Task t in ListofTask.All())
                     {
                         TaskBox.Items.Add(t);
                     }
