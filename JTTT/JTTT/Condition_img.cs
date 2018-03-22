@@ -39,7 +39,7 @@ namespace JTTT
                     break;
                 }
             }
-            return true; //poprawić!
+            return true;
         }
 
         public override string ToString()
