@@ -23,6 +23,7 @@ namespace JTTT
             var web = new HtmlWeb();
             var doc = web.Load(Url.address);
 
+
             var nodes = doc.DocumentNode.Descendants("img");
 
             foreach (var i in nodes)
