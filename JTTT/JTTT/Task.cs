@@ -8,7 +8,7 @@ namespace JTTT
 {
     public class Task
     {
-        public int TaskId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public Action Action { get; set; }
         public Condition Condition { get; set; }
@@ -21,6 +21,7 @@ namespace JTTT
             Action = action;
             Condition = condition;
             Time = time;
+            //this.ListofTask = new ListofTask();
         }
 
         public override string ToString()

@@ -138,10 +138,10 @@ namespace JTTT
             // TUTAJ ZNAJDUJE SIĘ TESTOWANIE MSSQL ****************************************************************
             using (var db = new ListofTaskComplex())
             {
-                var List = new ListofTask() { Name = "Długa lista" };
-                var Task = new Task(new Action(new JTTT.Mail("")), new Condition(new JTTT.Key(""), new Url("")), new Time()) { Name = "First" };
-                var Task2 = new Task(new Action(new JTTT.Mail("")), new Condition(new JTTT.Key(""), new Url("")), new Time()) { Name = "Second" };
-                var Task3 = new Task(new Action(new JTTT.Mail("")), new Condition(new JTTT.Key(""), new Url("")), new Time()) { Name = "Third" };
+                var List = new ListofTask() { Name = "Długa lista", Id=1};
+                var Task = new Task(new Action_img(new JTTT.Mail("jhjkh")), new Condition_img(new JTTT.Key(""), new Url("")), new Time()) { Name = "First", Id=1 };
+                var Task2 = new Task(new Action_img(new JTTT.Mail("jhkjkhj")), new Condition_img(new JTTT.Key(""), new Url("")), new Time()) { Name = "Second", Id=2 };
+                var Task3 = new Task(new Action_img(new JTTT.Mail("jjjjjkhkj")), new Condition_img(new JTTT.Key(""), new Url("")), new Time()) { Name = "Third", Id=3};
 
                 List.Tasks.Add(Task);
                 List.Tasks.Add(Task2);

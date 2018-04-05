@@ -9,13 +9,13 @@ namespace JTTT
 {
     public class ListofTask: IListofTask
     {
-        public int ListofTaskId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public virtual BindingList<Task> Tasks { get; set; }
 
         public ListofTask()
         {
-            Tasks = new BindingList<Task>(); 
+            this.Tasks = new BindingList<Task>(); 
         }
 
         public void Add(Task task)
