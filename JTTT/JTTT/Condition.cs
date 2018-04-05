@@ -8,6 +8,9 @@ namespace JTTT
 {
     public class Condition: ICondition
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
         public Key Key;// = new Key();
         public Url Url;// = new Url();
      

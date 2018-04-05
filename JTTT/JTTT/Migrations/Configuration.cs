@@ -10,6 +10,7 @@ namespace JTTT.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "JTTT.ListofTaskComplex";
         }
 
         protected override void Seed(JTTT.ListofTaskComplex context)

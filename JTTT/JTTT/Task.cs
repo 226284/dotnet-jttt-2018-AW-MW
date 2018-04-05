@@ -14,7 +14,7 @@ namespace JTTT
         public Condition Condition { get; set; }
         public Time Time { get; set; }
 
-        public virtual ListofTask ListofTask { get; set; }
+        public virtual ListofTask ListofTasks { get; set; }
 
         public Task(Action action, Condition condition, Time time)
         {

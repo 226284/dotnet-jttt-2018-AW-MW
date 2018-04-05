@@ -8,6 +8,9 @@ namespace JTTT
 {
     public class Action : IAction
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
         public Mail Mail;
         protected string fromMail = "amadi@scz.pl";
 

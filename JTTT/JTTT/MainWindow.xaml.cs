@@ -138,16 +138,16 @@ namespace JTTT
             // TUTAJ ZNAJDUJE SIĘ TESTOWANIE MSSQL ****************************************************************
             using (var db = new ListofTaskComplex())
             {
-                var List = new ListofTask() { Name = "Długa lista", Id=1};
-                var Task = new Task(new Action_img(new JTTT.Mail("jhjkh")), new Condition_img(new JTTT.Key(""), new Url("")), new Time()) { Name = "First", Id=1 };
-                var Task2 = new Task(new Action_img(new JTTT.Mail("jhkjkhj")), new Condition_img(new JTTT.Key(""), new Url("")), new Time()) { Name = "Second", Id=2 };
-                var Task3 = new Task(new Action_img(new JTTT.Mail("jjjjjkhkj")), new Condition_img(new JTTT.Key(""), new Url("")), new Time()) { Name = "Third", Id=3};
+                var list = new ListofTask() { Name = "Długa lista", Id=1};
+                var task = new Task(new Action_img(new JTTT.Mail("jhjkh")), new Condition_img(new JTTT.Key("d"), new Url("d")), new Time()) { Name = "First", Id=1 };
+                var task2 = new Task(new Action_img(new JTTT.Mail("jhkjkhj")), new Condition_img(new JTTT.Key("s"), new Url("s")), new Time()) { Name = "Second", Id=2 };
+                var task3 = new Task(new Action_img(new JTTT.Mail("jjjjjkhkj")), new Condition_img(new JTTT.Key("f"), new Url("f")), new Time()) { Name = "Third", Id=3};
 
-                List.Tasks.Add(Task);
-                List.Tasks.Add(Task2);
-                List.Tasks.Add(Task2);
+                list.Tasks.Add(task);
+                list.Tasks.Add(task2);
+                list.Tasks.Add(task2);
 
-                db.ListofTasks.Add(List); //err: wartość nie może być zerowa
+                db.ListofTasks.Add(list); //err: wartość nie może być zerowa
                 db.SaveChanges();
             }
 
