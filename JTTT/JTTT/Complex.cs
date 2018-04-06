@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    class ListofTaskComplex : DbContext
+    class Complex : DbContext
     {
         public DbSet<Task> Tasks { get; set; }
         public DbSet<ListofTask> ListofTasks { get; set; }

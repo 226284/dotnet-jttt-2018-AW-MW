@@ -81,16 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Action_img.cs" />
-    <Compile Include="ListofTaskComplex.cs" />
-    <Compile Include="Migrations\201804052036465_InitialCreate.cs" />
-    <Compile Include="Migrations\201804052036465_InitialCreate.Designer.cs">
-      <DependentUpon>201804052036465_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201804052055172_new.cs" />
-    <Compile Include="Migrations\201804052055172_new.Designer.cs">
-      <DependentUpon>201804052055172_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Complex.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="Deserialize.cs" />
     <Compile Include="File.cs" />
@@ -139,12 +130,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <EmbeddedResource Include="Migrations\201804052036465_InitialCreate.resx">
-      <DependentUpon>201804052036465_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201804052055172_new.resx">
-      <DependentUpon>201804052055172_new.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

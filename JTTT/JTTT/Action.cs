@@ -11,7 +11,9 @@ namespace JTTT
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public Mail Mail;
+        //Entity
+        //public virtual Mail Mail { get; set; }
+        public Mail Mail { get; set; }
         protected string fromMail = "amadi@scz.pl";
 
         public Action(Mail mail)

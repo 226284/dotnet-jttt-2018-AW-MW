@@ -19,10 +19,10 @@ namespace JTTT
         public override bool Check(string option)
         {
             WebClient client = new WebClient();
-            var reply = client.DownloadString(Url.address);
+            var reply = client.DownloadString(Url.Address);
 
             var web = new HtmlWeb();
-            var doc = web.Load(Url.address);
+            var doc = web.Load(Url.Address);
 
 
             var nodes = doc.DocumentNode.Descendants("img");

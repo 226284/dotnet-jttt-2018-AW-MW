@@ -11,7 +11,7 @@ namespace JTTT
     {
         public bool isValid(Url url)
         {
-            if (Uri.IsWellFormedUriString(url.address, UriKind.Absolute))
+            if (Uri.IsWellFormedUriString(url.Address, UriKind.Absolute))
             {
                 return true;
             }

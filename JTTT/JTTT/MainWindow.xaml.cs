@@ -136,7 +136,7 @@ namespace JTTT
             Dispatcher.Run();
 
             // TUTAJ ZNAJDUJE SIĘ TESTOWANIE MSSQL ****************************************************************
-            using (var db = new ListofTaskComplex())
+            using (var db = new Complex())
             {
                 var list = new ListofTask() { Name = "Długa lista", Id=1};
                 var task = new Task(new Action_img(new JTTT.Mail("jhjkh")), new Condition_img(new JTTT.Key("d"), new Url("d")), new Time()) { Name = "First", Id=1 };
