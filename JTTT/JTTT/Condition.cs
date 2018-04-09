@@ -15,8 +15,8 @@ namespace JTTT
 
         public Condition(Key key, Url url)
         {
-            Key = key;
-            Url = url;
+           Key = key;
+           Url = url;
         }
 
         public virtual bool Check(string option)

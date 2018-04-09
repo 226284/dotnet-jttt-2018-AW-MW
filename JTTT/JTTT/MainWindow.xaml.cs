@@ -101,6 +101,30 @@ namespace JTTT
 
             urlValidator = new UrlValidator();
             mailValidator = new MailValidator();
+
+            /*przywracanie tasków z bazy danynch*/
+            using (var db = new JTTTDbContext())
+            {
+                Task tmp = new Task();
+                // pomocniczy task
+                
+                foreach (var l in db.ListofTasks)
+                {
+                    foreach (var t in l.Tasks)
+                    {
+                        
+                        tmp.Action.Mail = t.Action.Mail;
+                        /*tmp.Condition.Url = t.Condition.Url;
+                        tmp.Condition.Key = t.Condition.Key;
+                        tmp.Time = t.Time;
+
+                        TaskBox.Items.Add(tmp);
+                        TaskBox.Items.Refresh();
+                        */
+                    }
+                }
+                
+            }
         }
 
         private void CheckBox_Clicked(object sender, RoutedEventArgs e)
@@ -118,7 +142,13 @@ namespace JTTT
             C.Url = new Url(URLBox.Text);
             A.Mail = new Mail(MailBox.Text);
 
-            var Task = new Task(A, C, new Time());
+            //var Task = new Task(A, C, new Time()); //{ Name = "Przykładowa nazwa" }; - bez db
+            var Task = new Task();
+            Task.Action = A;
+            Task.Condition = C;
+            Task.Time = new Time();
+
+
             Log Log = new Log(Task);
 
             if (urlValidator.isValid(C.Url) && mailValidator.isValid(A.Mail))
@@ -126,6 +156,13 @@ namespace JTTT
                 ListofTask.Add(Task);
                 TaskBox.Items.Add(Task);
                 TaskBox.Items.Refresh();
+            }
+
+            /* dodawanie tasków do bazy danych*/
+            using (var db = new JTTTDbContext())
+            {
+                db.ListofTasks.Add(ListofTask); //err: wartość nie może być zerowa
+                db.SaveChanges();
             }
 
         }
@@ -136,12 +173,13 @@ namespace JTTT
             Dispatcher.Run();
 
             // TUTAJ ZNAJDUJE SIĘ TESTOWANIE MSSQL ****************************************************************
-            using (var db = new Complex())
+            /*
+            using (var db = new JTTTDbContext())
             {
-                var list = new ListofTask() { Name = "Długa lista", Id=1};
-                var task = new Task(new Action_img(new JTTT.Mail("jhjkh")), new Condition_img(new JTTT.Key("d"), new Url("d")), new Time()) { Name = "First", Id=1 };
-                var task2 = new Task(new Action_img(new JTTT.Mail("jhkjkhj")), new Condition_img(new JTTT.Key("s"), new Url("s")), new Time()) { Name = "Second", Id=2 };
-                var task3 = new Task(new Action_img(new JTTT.Mail("jjjjjkhkj")), new Condition_img(new JTTT.Key("f"), new Url("f")), new Time()) { Name = "Third", Id=3};
+                var list = new ListofTask() { Name = "Długa lista", Id = 1 };
+                var task = new Task(new Action_img(new JTTT.Mail("jhjkh")), new Condition_img(new JTTT.Key("d"), new Url("d")), new Time()) { Name = "First", Id = 1 };
+                var task2 = new Task(new Action_img(new JTTT.Mail("jhkjkhj")), new Condition_img(new JTTT.Key("s"), new Url("s")), new Time()) { Name = "Second", Id = 2 };
+                var task3 = new Task(new Action_img(new JTTT.Mail("jjjjjkhkj")), new Condition_img(new JTTT.Key("f"), new Url("f")), new Time()) { Name = "Third", Id = 3 };
 
                 list.Tasks.Add(task);
                 list.Tasks.Add(task2);
@@ -150,7 +188,7 @@ namespace JTTT
                 db.ListofTasks.Add(list); //err: wartość nie może być zerowa
                 db.SaveChanges();
             }
-
+            */
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)

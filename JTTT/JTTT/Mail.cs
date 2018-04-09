@@ -10,7 +10,6 @@ namespace JTTT
     {
         public int Id { get; set; }
         public string Address { get; set; }
-        
         //Entity
         //public virtual Action Actions { get; set; }
 

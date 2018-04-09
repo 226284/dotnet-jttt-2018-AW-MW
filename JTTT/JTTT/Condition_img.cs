@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -9,6 +10,7 @@ using System.Windows;
 
 namespace JTTT
 {
+    [Table("Condition_imgs")]
     public class Condition_img : Condition
     {
         public Condition_img(Key key, Url url) : base(key, url)

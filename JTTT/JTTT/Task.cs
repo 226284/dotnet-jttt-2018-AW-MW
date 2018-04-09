@@ -16,13 +16,13 @@ namespace JTTT
 
         public virtual ListofTask ListofTasks { get; set; }
 
-        public Task(Action action, Condition condition, Time time)
+        /*public Task(Action action, Condition condition, Time time)
         {
             Action = action;
             Condition = condition;
             Time = time;
             //this.ListofTask = new ListofTask();
-        }
+        }*/
 
         public override string ToString()
         {

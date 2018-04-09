@@ -3,12 +3,14 @@ using MailKit.Security;
 using MimeKit;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace JTTT
 {
+    [Table("Action_imgs")]
     public class Action_img : Action
     {
         public Action_img(Mail mail) : base(mail)

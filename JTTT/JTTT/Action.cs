@@ -10,15 +10,13 @@ namespace JTTT
     {
         public int Id { get; set; }
         public string Name { get; set; }
-
-        //Entity
-        //public virtual Mail Mail { get; set; }
         public Mail Mail { get; set; }
-        protected string fromMail = "amadi@scz.pl";
 
-        public Action(Mail mail)
+        protected string fromMail = "amadi@scz.pl";
+        
+        public Action (Mail mail)
         {
-            //  Mail = mail;
+            Mail = mail;
         }
         public virtual void Job()
         {
