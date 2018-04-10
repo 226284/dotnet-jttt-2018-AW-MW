@@ -107,23 +107,19 @@ namespace JTTT
             {
                 Task tmp = new Task();
                 // pomocniczy task
-                
-                foreach (var l in db.ListofTasks)
-                {
-                    foreach (var t in l.Tasks)
-                    {
-                        
-                        tmp.Action.Mail = t.Action.Mail;
-                        /*tmp.Condition.Url = t.Condition.Url;
-                        tmp.Condition.Key = t.Condition.Key;
-                        tmp.Time = t.Time;
 
-                        TaskBox.Items.Add(tmp);
-                        TaskBox.Items.Refresh();
-                        */
-                    }
+                foreach (var t in db.Tasks)
+                {
+
+                    tmp.Action.Mail = t.Action.Mail;
+                    /*tmp.Condition.Url = t.Condition.Url;
+                    tmp.Condition.Key = t.Condition.Key;
+                    tmp.Time = t.Time;
+
+                    TaskBox.Items.Add(tmp);
+                    TaskBox.Items.Refresh();
+                    */
                 }
-                
             }
         }
 
@@ -156,15 +152,14 @@ namespace JTTT
                 ListofTask.Add(Task);
                 TaskBox.Items.Add(Task);
                 TaskBox.Items.Refresh();
-            }
 
-            /* dodawanie tasków do bazy danych*/
-            using (var db = new JTTTDbContext())
-            {
-                db.ListofTasks.Add(ListofTask); //err: wartość nie może być zerowa
-                db.SaveChanges();
+                /* dodawanie tasków do bazy danych*/
+                using (var db = new JTTTDbContext())
+                {
+                    db.Tasks.Add(Task);
+                    db.SaveChanges();
+                }
             }
-
         }
 
         private void Run_Click(object sender, RoutedEventArgs e)
