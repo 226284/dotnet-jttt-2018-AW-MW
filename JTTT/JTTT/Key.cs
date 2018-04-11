@@ -11,6 +11,7 @@ namespace JTTT
         public int Id { get; set; }
         public string Name { get; set; }
 
+        public Key() { }
         public Key(string name)
         {
             Name = name;

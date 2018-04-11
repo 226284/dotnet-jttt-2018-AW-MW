@@ -13,6 +13,10 @@ namespace JTTT
   //  [Table("Condition_imgs")]
     public class Condition_img : Condition
     {
+        public Condition_img()
+        {
+
+        }
         public Condition_img(Key key, Url url) : base(key, url)
         {
             Key = key;

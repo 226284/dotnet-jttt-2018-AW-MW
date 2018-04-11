@@ -106,21 +106,14 @@ namespace JTTT
             using (var db = new JTTTDbContext())
             {
                 Task tmp = new Task();
-                // pomocniczy task
-
                 foreach (var t in db.Tasks)
                 {
-
-                   // tmp.Action.Mail = t.Action.Mail;
-                    TaskBox.Items.Add(t);
-                    TaskBox.Items.Refresh();
-                    /*tmp.Condition.Url = t.Condition.Url;
-                    tmp.Condition.Key = t.Condition.Key;
+                    tmp.Action = t.Action;
+                    tmp.Condition = t.Condition;
                     tmp.Time = t.Time;
-
                     TaskBox.Items.Add(tmp);
+                    ListofTask.Add(tmp);
                     TaskBox.Items.Refresh();
-                    */
                 }
             }
         }
@@ -129,7 +122,6 @@ namespace JTTT
         {
 
         }
-
 
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
@@ -140,12 +132,7 @@ namespace JTTT
             C.Url = new Url(URLBox.Text);
             A.Mail = new Mail(MailBox.Text);
 
-            //var Task = new Task(A, C, new Time()); //{ Name = "Przykładowa nazwa" }; - bez db
-            var Task = new Task();
-            Task.Action = A;
-            Task.Condition = C;
-            Task.Time = new Time();
-
+            var Task = new Task(A, C, new Time()); //{ Name = "Przykładowa nazwa" }; - bez db
 
             Log Log = new Log(Task);
 
@@ -168,24 +155,6 @@ namespace JTTT
         {
             Dispatcher = new Dispatcher(ListofTask);
             Dispatcher.Run();
-
-            // TUTAJ ZNAJDUJE SIĘ TESTOWANIE MSSQL ****************************************************************
-            /*
-            using (var db = new JTTTDbContext())
-            {
-                var list = new ListofTask() { Name = "Długa lista", Id = 1 };
-                var task = new Task(new Action_img(new JTTT.Mail("jhjkh")), new Condition_img(new JTTT.Key("d"), new Url("d")), new Time()) { Name = "First", Id = 1 };
-                var task2 = new Task(new Action_img(new JTTT.Mail("jhkjkhj")), new Condition_img(new JTTT.Key("s"), new Url("s")), new Time()) { Name = "Second", Id = 2 };
-                var task3 = new Task(new Action_img(new JTTT.Mail("jjjjjkhkj")), new Condition_img(new JTTT.Key("f"), new Url("f")), new Time()) { Name = "Third", Id = 3 };
-
-                list.Tasks.Add(task);
-                list.Tasks.Add(task2);
-                list.Tasks.Add(task2);
-
-                db.ListofTasks.Add(list); //err: wartość nie może być zerowa
-                db.SaveChanges();
-            }
-            */
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -193,6 +162,16 @@ namespace JTTT
             ListofTask.Clear();
             TaskBox.Items.Clear();
             TaskBox.Items.Refresh();
+
+            // czyszczenie bazy danych
+            using (var db = new JTTTDbContext())
+            {
+                foreach (var t in db.Tasks)
+                {
+                    db.Tasks.Remove(t); /*wywołanie kaskadowe*/
+                }
+                db.SaveChanges();
+            }
         }
 
         private void Serialize_Click(object sender, RoutedEventArgs e)

@@ -10,19 +10,23 @@ namespace JTTT
     {
         public int TaskID { get; set; }
         public string Name { get; set; }
-        public virtual Action Action { get; set; } = new Action();
-        public Condition Condition { get; set; } = new Condition();
+        public virtual Action Action { get; set; } //= new Action();
+        public virtual Condition Condition { get; set; }// = new Condition();
         public Time Time { get; set; }
 
-       // public virtual ListofTask ListofTasks { get; set; }
+        // public virtual ListofTask ListofTasks { get; set; }
 
-        /*public Task(Action action, Condition condition, Time time)
+        public Task()
+        {
+
+        }
+        public Task(Action action, Condition condition, Time time)
         {
             Action = action;
             Condition = condition;
             Time = time;
             //this.ListofTask = new ListofTask();
-        }*/
+        }
 
         public override string ToString()
         {
