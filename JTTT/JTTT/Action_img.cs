@@ -10,9 +10,13 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    [Table("Action_imgs")]
+   // [Table("Action_imgs")]
     public class Action_img : Action
     {
+        public Action_img()
+        {
+
+        }
         public Action_img(Mail mail) : base(mail)
         {
             Mail = mail;

@@ -10,8 +10,10 @@ namespace JTTT
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Key Key { get; set; }
-        public Url Url { get; set; }
+        public virtual Key Key { get; set; }
+        public virtual Url Url { get; set; }
+
+        public Condition() { }
 
         public Condition(Key key, Url url)
         {

@@ -9,6 +9,11 @@ namespace JTTT
 {
     public class JTTTDbContext : DbContext
     {
+        public JTTTDbContext()
+            : base("JTTT14")
+        {
+          
+        }
         public DbSet<Task> Tasks { get; set; }
         public DbSet<ListofTask> ListofTasks { get; set; }
         public DbSet<Action> Actions { get; set; }

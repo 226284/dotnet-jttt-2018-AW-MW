@@ -8,13 +8,13 @@ namespace JTTT
 {
     public class Task
     {
-        public int Id { get; set; }
+        public int TaskID { get; set; }
         public string Name { get; set; }
-        public Action Action { get; set; }
-        public Condition Condition { get; set; }
+        public virtual Action Action { get; set; } = new Action();
+        public Condition Condition { get; set; } = new Condition();
         public Time Time { get; set; }
 
-        public virtual ListofTask ListofTasks { get; set; }
+       // public virtual ListofTask ListofTasks { get; set; }
 
         /*public Task(Action action, Condition condition, Time time)
         {

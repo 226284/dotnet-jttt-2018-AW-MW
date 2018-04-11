@@ -111,7 +111,9 @@ namespace JTTT
                 foreach (var t in db.Tasks)
                 {
 
-                    tmp.Action.Mail = t.Action.Mail;
+                   // tmp.Action.Mail = t.Action.Mail;
+                    TaskBox.Items.Add(t);
+                    TaskBox.Items.Refresh();
                     /*tmp.Condition.Url = t.Condition.Url;
                     tmp.Condition.Key = t.Condition.Key;
                     tmp.Time = t.Time;
