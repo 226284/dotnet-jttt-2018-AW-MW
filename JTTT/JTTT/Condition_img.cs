@@ -35,12 +35,17 @@ namespace JTTT
 
             foreach (var i in nodes)
             {
-                if (i.GetAttributeValue("alt", "").ToLower().Contains(Key.Name.ToLower()) && i.GetAttributeValue("src", "").Contains("http"))
+                if (i.GetAttributeValue("alt", "").ToLower().Contains(Key.Name.ToLower()))
                 {
+
                     string path = @"img.jpg";
                     using (var client2 = new WebClient())
                     {
-                        client.DownloadFile(i.GetAttributeValue("src", ""), path);
+
+                        if(i.GetAttributeValue("src", "").Contains("http"))
+                            client.DownloadFile(i.GetAttributeValue("src", ""), path);
+                        else
+                            client.DownloadFile(Url.Address + i.GetAttributeValue("src", ""), path);
                     }
                     break;
                     //return true; //poprawić!
