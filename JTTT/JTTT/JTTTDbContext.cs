@@ -7,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    public class JTTTDbContext : DbContext
+    class JTTTDbContext : DbContext
     {
         public JTTTDbContext()
-            : base("JTTT16")
+            : base("JTTT18")
         {
           
         }
         public DbSet<Task> Tasks { get; set; }
+        public DbSet<Task> Parameters { get; set; }
         public DbSet<ListofTask> ListofTasks { get; set; }
         public DbSet<Action> Actions { get; set; }
         public DbSet<Condition> Conditions { get; set; }

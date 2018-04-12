@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-   public class Deserialize
+   class Deserialize
     {
         public ListofTask JsonDeserialize(string input)
         {

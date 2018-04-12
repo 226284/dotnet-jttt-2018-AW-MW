@@ -29,13 +29,13 @@ namespace JTTT
     /// </summary>
     public partial class MainWindow : Window
     {
-        private string url;
-        private string reply;
+        //private string url;
+        //private string reply;
 
-        private string fromMail = "JTTT";
-        private string fromMailAdress = "amadi@scz.pl";
+        //private string fromMail = "JTTT";
+        //private string fromMailAdress = "amadi@scz.pl";
 
-        private string toMailAdress;
+        //private string toMailAdress;
 
         private Dispatcher Dispatcher;
         private ListofTask ListofTask;
@@ -112,12 +112,7 @@ namespace JTTT
                     tmp.Condition = t.Condition;
                     tmp.Time = t.Time;
 
-                    //Console.WriteLine(tmp.Condition.Url.Address);
-                    //Console.WriteLine("***");
-                    //Console.WriteLine(tmp.Condition.Key.Name);
-                    //Console.WriteLine("***");
-                    //Console.WriteLine(tmp.Action.Mail);
-                    //Console.WriteLine("***");
+                    //tmp.Parameters.ToString();
 
                     TaskBox.Items.Add(tmp);
                     ListofTask.Add(tmp);

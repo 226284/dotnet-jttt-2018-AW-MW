@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    public class Serialize
+    class Serialize
     {
         public string JsonSerialize(ListofTask Tasks)
         {

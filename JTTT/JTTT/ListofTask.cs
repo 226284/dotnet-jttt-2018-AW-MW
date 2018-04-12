@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    public class ListofTask: IListofTask
+    class ListofTask: IListofTask
     {
         public int Id { get; set; }
         public string Name { get; set; }

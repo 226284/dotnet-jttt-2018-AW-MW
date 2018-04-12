@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JTTT.DB
 {
-    public class JTTTDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<JTTTDbContext>
+    class JTTTDbInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<JTTTDbContext>
     {
         
         /* Metoda do uzupelniania danych po zaoraniu bazy

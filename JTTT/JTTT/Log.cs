@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    public class Log //:ILog
+    class Log //:ILog
     {
         public Log(Task task)
         {
