@@ -18,7 +18,8 @@ namespace JTTT
 
         public Task()
         {
-
+           // Action = new Action();
+           // Condition = new Condition();
         }
         public Task(Action action, Condition condition, Time time)
         {

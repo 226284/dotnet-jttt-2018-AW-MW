@@ -108,9 +108,12 @@ namespace JTTT
                 Task tmp = new Task();
                 foreach (var t in db.Tasks)
                 {
+                    tmp = t;
                     tmp.Action = t.Action;
+                    tmp.Action.Mail = t.Action.Mail;
                     tmp.Condition = t.Condition;
-                    tmp.Time = t.Time;
+                    tmp.Condition.Key = t.Condition.Key;
+                    tmp.Condition.Url = t.Condition.Url;
                     TaskBox.Items.Add(tmp);
                     ListofTask.Add(tmp);
                     TaskBox.Items.Refresh();

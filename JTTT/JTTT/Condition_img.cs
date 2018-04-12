@@ -35,7 +35,7 @@ namespace JTTT
 
             foreach (var i in nodes)
             {
-                if (i.GetAttributeValue("alt", "").ToLower().Contains(Key.Name.ToLower()))
+                if (i.GetAttributeValue("alt", "").ToLower().Contains(Key.Name.ToLower()) && i.GetAttributeValue("src", "").Contains("http"))
                 {
                     string path = @"img.jpg";
                     using (var client2 = new WebClient())

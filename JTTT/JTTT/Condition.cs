@@ -13,7 +13,10 @@ namespace JTTT
         public virtual Key Key { get; set; }
         public virtual Url Url { get; set; }
 
-        public Condition() { }
+        public Condition() {
+            
+
+        }
 
         public Condition(Key key, Url url)
         {

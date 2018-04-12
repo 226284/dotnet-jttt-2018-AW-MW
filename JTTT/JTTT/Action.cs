@@ -19,7 +19,7 @@ namespace JTTT
 
         public Action()
         {
-
+          //  Mail = new Mail();
         }
         public Action (Mail mail)
         {
