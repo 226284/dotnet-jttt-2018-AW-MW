@@ -8,7 +8,7 @@ namespace JTTT
 {
     public class Mail
     {
-        public int MailID { get; set; }
+        public int Id { get; set; }
         public string Address { get; set; }
 
         //Entity

@@ -7,27 +7,19 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    public class Action : IAction
+    class Action : IAction
     {
        
-        public int ActionID { get; set; }
-        public string Name { get; set; }
-        public virtual Mail Mail { get; set; }
-       
-
-       protected string fromMail = "amadi@scz.pl";
+        public int Id { get; set; }
 
         public Action()
         {
 
         }
-        public Action (Mail mail)
+
+        public virtual void Job(Parameters parameters)
         {
-            Mail = mail;
-        }
-        public virtual void Job()
-        {
-            //send mail or something
+            //send mail or something else
         }
     }
 }

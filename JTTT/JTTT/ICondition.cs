@@ -9,6 +9,6 @@ namespace JTTT
     interface ICondition
     {
         // checks the option in the box
-        bool Check(string option);
+        bool Check(Parameters parameters);
     }
 }

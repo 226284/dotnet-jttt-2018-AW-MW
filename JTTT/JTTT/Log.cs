@@ -13,7 +13,7 @@ namespace JTTT
         {
             using (StreamWriter sw = System.IO.File.AppendText("log.txt"))
             {
-                sw.WriteLine(task.Time.time + "  " + task.Condition.Key.Name + "  " + task.Condition.Url.Address + "  " + task.Action.Mail.Address);
+                //sw.WriteLine(task.Time.time + "  " + task.Condition.Key.Name + "  " + task.Condition.Url.Address + "  " + task.Action.Mail.Address);
             }
         }
     }

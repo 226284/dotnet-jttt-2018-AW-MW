@@ -8,6 +8,6 @@ namespace JTTT
 {
     interface IAction
     {
-        void Job();
+        void Job(Parameters parameters);
     }
 }

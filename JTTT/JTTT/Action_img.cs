@@ -11,22 +11,20 @@ using System.Threading.Tasks;
 namespace JTTT
 {
    // [Table("Action_imgs")]
-    public class Action_img : Action
+    class Action_img : Action
     {
+        protected string fromMail = "amadi@scz.pl";
+
         public Action_img()
         {
 
         }
-        public Action_img(Mail mail) : base(mail)
-        {
-            Mail = mail;
-        }
 
-        public override void Job()
+        public override void Job(Parameters parameters)
         {
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("JTTT", fromMail));
-            message.To.Add(new MailboxAddress("YourName", Mail.Address));
+            message.To.Add(new MailboxAddress("YourName", parameters.Mail.Address));
             message.Subject = "Key found event!";
 
             var body = new TextPart("plain")

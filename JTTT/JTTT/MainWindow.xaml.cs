@@ -81,10 +81,10 @@ namespace JTTT
             ListofActions = new List<Action>();
 
             /* Add all conditions */
-            ListofConditions.Add(new Condition_img(new JTTT.Key(""), new Url("")));
+            ListofConditions.Add(new Condition_img());
 
             /* Add all actions */
-            ListofActions.Add(new Action_img(new JTTT.Mail("")));
+            ListofActions.Add(new Action_img());
 
             ConditionsComboBox.ItemsSource = ListofConditions;
             ActionsComboBox.ItemsSource = ListofActions;
@@ -111,6 +111,14 @@ namespace JTTT
                     tmp.Action = t.Action;
                     tmp.Condition = t.Condition;
                     tmp.Time = t.Time;
+
+                    //Console.WriteLine(tmp.Condition.Url.Address);
+                    //Console.WriteLine("***");
+                    //Console.WriteLine(tmp.Condition.Key.Name);
+                    //Console.WriteLine("***");
+                    //Console.WriteLine(tmp.Action.Mail);
+                    //Console.WriteLine("***");
+
                     TaskBox.Items.Add(tmp);
                     ListofTask.Add(tmp);
                     TaskBox.Items.Refresh();
@@ -128,15 +136,16 @@ namespace JTTT
             var C = ConditionsComboBox.SelectedItem as Condition;
             var A = ActionsComboBox.SelectedItem as Action;
 
-            C.Key = new Key(KeyBox.Text);
-            C.Url = new Url(URLBox.Text);
-            A.Mail = new Mail(MailBox.Text);
-
-            var Task = new Task(A, C, new Time()); //{ Name = "Przykładowa nazwa" }; - bez db
+            Task Task = new Task();
+            Task.Parameters.Key.Name = KeyBox.Text;
+            Task.Parameters.Url.Address = URLBox.Text;
+            Task.Parameters.Mail.Address = MailBox.Text;
+            //Task.Parameters.City.Name = CityBox.Text;
+            //Task.Parameters.Temp.Value = TempBox.Text;
 
             Log Log = new Log(Task);
 
-            if (urlValidator.isValid(C.Url) && mailValidator.isValid(A.Mail))
+            if (urlValidator.isValid(Task.Parameters.Url) && mailValidator.isValid(Task.Parameters.Mail))
             {
                 ListofTask.Add(Task);
                 TaskBox.Items.Add(Task);

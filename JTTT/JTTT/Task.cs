@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-    public class Task
+    class Task
     {
         public int TaskID { get; set; }
-        public string Name { get; set; }
+        //public string Name { get; set; }
         public virtual Action Action { get; set; } //= new Action();
         public virtual Condition Condition { get; set; }// = new Condition();
         public Time Time { get; set; }
+
+        public Parameters Parameters { get; set; }
 
         // public virtual ListofTask ListofTasks { get; set; }
 
