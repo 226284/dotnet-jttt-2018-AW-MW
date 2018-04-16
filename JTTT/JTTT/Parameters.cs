@@ -10,17 +10,17 @@ namespace JTTT
     {
         public int Id { get; set; }
         // img - send parameters
-        virtual public Url Url { get; set; }
-        virtual public Key Key { get; set; }
-        virtual public Mail Mail { get; set; }
-
-        //public City City { get; set; }
-        //public Temperature Temp { get; set; }
+        public Url Url { get; set; }
+        public Key Key { get; set; }
+        public Mail Mail { get; set; }
+        // weather
+        public City City { get; set; }
+        public Temperature Temperature { get; set; }
         //public Parameters() { }
           
         public override string ToString()
         {
-            return String.Format("Url: {0} Key: {1} Mail: {0}", Url, Key, Mail);
+            return String.Format("Url: {0} Key: {1} Mail: {2} City: {3} Temperature: {4}", Url, Key, Mail, City, Temperature);
         }
     }
 }

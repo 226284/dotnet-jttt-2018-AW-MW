@@ -29,7 +29,7 @@ namespace JTTT
     /// </summary>
     public partial class MainWindow : Window
     {
-        
+
         private Dispatcher Dispatcher;
         private ListofTask ListofTask;
 
@@ -39,6 +39,8 @@ namespace JTTT
         private TextBox URLBox;
         private TextBox KeyBox;
         private TextBox MailBox;
+        private TextBox CityBox;
+        private TextBox TemperatureBox;
 
         private TextBlock ErrorBlock;
 
@@ -53,6 +55,8 @@ namespace JTTT
         private UrlValidator urlValidator;
         private MailValidator mailValidator;
 
+        private Parameters Parameters;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -63,6 +67,8 @@ namespace JTTT
             URLBox = (TextBox)this.FindName("URL");
             KeyBox = (TextBox)this.FindName("Key");
             MailBox = (TextBox)this.FindName("Mail");
+            CityBox = (TextBox)this.FindName("City");
+            TemperatureBox = (TextBox)this.FindName("Temp");
 
             ErrorBlock = (TextBlock)this.FindName("error");
 
@@ -84,7 +90,7 @@ namespace JTTT
 
             ListofTask = new ListofTask();
 
-
+            Parameters = new Parameters();
 
             foreach (Task t in ListofTask.All())
             {
@@ -125,15 +131,14 @@ namespace JTTT
             var C = ConditionsComboBox.SelectedItem as Condition;
             var A = ActionsComboBox.SelectedItem as Action;
 
-            Task Task = new Task();
+            Parameters.Key.Name = KeyBox.Text;
+            Parameters.Url.Address = URLBox.Text;
+            Parameters.Mail.Address = MailBox.Text;
+            Parameters.City.Name = CityBox.Text;
+            Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
 
-
-            Task.Parameters.Key.Name = KeyBox.Text;
-            Task.Parameters.Url.Address = URLBox.Text;
-            Task.Parameters.Mail.Address = MailBox.Text;
-            //Task.Parameters.City.Name = CityBox.Text;
-            //Task.Parameters.Temp.Value = TempBox.Text;
-
+            Task Task = new Task(A,C,Parameters,new Time());
+            
             Log Log = new Log(Task);
 
             if (urlValidator.isValid(Task.Parameters.Url) && mailValidator.isValid(Task.Parameters.Mail))
@@ -213,7 +218,7 @@ namespace JTTT
 
             catch
             {
-                Console.WriteLine("You fucked up");
+                Console.WriteLine("Deserialize error");
             }
         }
 

@@ -82,6 +82,7 @@
     </ApplicationDefinition>
     <Compile Include="Action_img.cs" />
     <Compile Include="City.cs" />
+    <Compile Include="Condition_weather.cs" />
     <Compile Include="DB\JTTTDbInitializer.cs" />
     <Compile Include="JTTTDbContext.cs" />
     <Compile Include="Parameters.cs" />

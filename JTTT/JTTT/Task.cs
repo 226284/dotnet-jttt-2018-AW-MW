@@ -22,11 +22,12 @@ namespace JTTT
         {
 
         }
-        public Task(Action action, Condition condition, Time time)
+        public Task(Action action, Condition condition, Parameters parameters, Time time)
         {
             Action = action;
             Condition = condition;
             Time = time;
+            Parameters = parameters;
             //this.ListofTask = new ListofTask();
         }
 
