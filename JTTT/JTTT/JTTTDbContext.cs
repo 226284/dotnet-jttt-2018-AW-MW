@@ -15,7 +15,7 @@ namespace JTTT
           
         }
         public DbSet<Task> Tasks { get; set; }
-        public DbSet<Task> Parameters { get; set; }
+        public DbSet<Parameters> Parameters { get; set; }
         public DbSet<ListofTask> ListofTasks { get; set; }
         public DbSet<Action> Actions { get; set; }
         public DbSet<Condition> Conditions { get; set; }

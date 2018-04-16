@@ -81,9 +81,11 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Action_img.cs" />
+    <Compile Include="City.cs" />
     <Compile Include="DB\JTTTDbInitializer.cs" />
     <Compile Include="JTTTDbContext.cs" />
     <Compile Include="Parameters.cs" />
+    <Compile Include="Temperature.cs" />
     <Compile Include="Time.cs" />
     <Compile Include="Deserialize.cs" />
     <Compile Include="File.cs" />
@@ -100,6 +102,11 @@
     <Compile Include="Task.cs" />
     <Compile Include="Url.cs" />
     <Compile Include="UrlValidator.cs" />
+    <Compile Include="WeatherApi.cs" />
+    <Compile Include="WeatherValues.cs" />
+    <Compile Include="WeatherWindow.xaml.cs">
+      <DependentUpon>WeatherWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -116,6 +123,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="WeatherWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Condition.cs" />

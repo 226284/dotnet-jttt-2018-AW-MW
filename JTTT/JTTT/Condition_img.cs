@@ -42,8 +42,7 @@ namespace JTTT
                     //return true; //poprawić!
                 }
             }
-            //MessageBox.Show("No img found on this site", "Warning");
-            //return false;
+
             return true;
         }
 

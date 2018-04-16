@@ -15,7 +15,7 @@ namespace JTTT
         virtual public Mail Mail { get; set; }
 
         //public City City { get; set; }
-        //public Temp Temp { get; set; }
+        //public Temperature Temp { get; set; }
         //public Parameters() { }
           
         public override string ToString()

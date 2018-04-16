@@ -29,14 +29,7 @@ namespace JTTT
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private string url;
-        //private string reply;
-
-        //private string fromMail = "JTTT";
-        //private string fromMailAdress = "amadi@scz.pl";
-
-        //private string toMailAdress;
-
+        
         private Dispatcher Dispatcher;
         private ListofTask ListofTask;
 
@@ -92,6 +85,7 @@ namespace JTTT
             ListofTask = new ListofTask();
 
 
+
             foreach (Task t in ListofTask.All())
             {
                 TaskBox.Items.Add(t);
@@ -132,6 +126,8 @@ namespace JTTT
             var A = ActionsComboBox.SelectedItem as Action;
 
             Task Task = new Task();
+
+
             Task.Parameters.Key.Name = KeyBox.Text;
             Task.Parameters.Url.Address = URLBox.Text;
             Task.Parameters.Mail.Address = MailBox.Text;
@@ -219,6 +215,12 @@ namespace JTTT
             {
                 Console.WriteLine("You fucked up");
             }
+        }
+
+        private void Weather(object sender, RoutedEventArgs e)
+        {
+            var window = new WeatherWindow { Owner = this };
+            window.Show();
         }
     }
 }

@@ -1,0 +1,17 @@
+﻿<Window x:Class="JTTT.WeatherWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:JTTT"
+        mc:Ignorable="d"
+        Title="Weather" Height="212.993" Width="259.629">
+    <Grid Margin="0,0,3.6,0.2">
+        <TextBlock HorizontalAlignment="Left" Margin="35,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="22"><Run Text="City"/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="CityBox" HorizontalAlignment="Left" Height="23" Margin="84,28,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Sprawdź pogodę" HorizontalAlignment="Left" Margin="35,69,0,0" VerticalAlignment="Top" Width="169" Click="CheckWeather"/>
+        <TextBlock x:Name="Weather" HorizontalAlignment="Left" Margin="107,109,0,0" TextWrapping="Wrap" Text="Prognoza:" VerticalAlignment="Top" Height="48" Width="94"/>
+        <Image x:Name="WeatherIcon" HorizontalAlignment="Left" Height="48" Margin="35,109,0,0" VerticalAlignment="Top" Width="48"/>
+
+    </Grid>
+</Window>

@@ -17,7 +17,7 @@ namespace JTTT
 
         }
 
-        public virtual void Job(Parameters parameters)
+        public virtual void Job(Parameters _parameters)
         {
             //send mail or something else
         }
