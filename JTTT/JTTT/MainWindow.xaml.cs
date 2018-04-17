@@ -50,9 +50,6 @@ namespace JTTT
 
         private CheckBox PicBox;
 
-        private TabItem TabItem1;
-        private TabItem TabItem2;
-
         private File file;
 
         private UrlValidator urlValidator;
@@ -79,9 +76,6 @@ namespace JTTT
 
             TaskBox = (ListBox)this.FindName("TaskListBox");
 
-            TabItem1 = (TabItem)this.FindName("site");
-            TabItem2 = (TabItem)this.FindName("weather");
-
             ListofConditions = new List<Condition>();
             ListofActions = new List<Action>();
 
@@ -89,7 +83,7 @@ namespace JTTT
             ListofConditions.Add(new Condition_img());
 
             /* Add all actions */
-            ListofActions.Add(new Action_img());
+            ListofActions.Add(new Action_send());
 
             ConditionsComboBox.ItemsSource = ListofConditions;
             ActionsComboBox.ItemsSource = ListofActions;
@@ -127,66 +121,133 @@ namespace JTTT
 
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
-            if (TabItem1.IsSelected)
+            if (TabCondSite.IsSelected)
             {
-                var C = ConditionsComboBox.SelectedItem as Condition;
-                var A = ActionsComboBox.SelectedItem as Action;
-
-                Parameters.Key.Name = KeyBox.Text;
-                Parameters.Url.Address = URLBox.Text;
-                Parameters.Mail.Address = MailBox.Text;
-                Parameters.City.Name = CityBox.Text;
-                Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
-
-                Task Task = new Task(A, C, Parameters, new Time());
-
-                Log Log = new Log(Task);
-
-                if (urlValidator.isValid(Task.Parameters.Url) && mailValidator.isValid(Task.Parameters.Mail))
+                if (ActionSend.IsSelected)
                 {
-                    ListofTask.Add(Task);
-                    TaskBox.Items.Add(Task);
-                    TaskBox.Items.Refresh();
+                    var C = ConditionsComboBox.SelectedItem as Condition;
+                    var A = ActionsComboBox.SelectedItem as Action;
 
-                    /* dodawanie tasków do bazy danych*/
-                    using (var db = new JTTTDbContext())
+                    Parameters.Key.Name = KeyBox.Text;
+                    Parameters.Url.Address = URLBox.Text;
+                    Parameters.Mail.Address = MailBox.Text;
+                    Parameters.City.Name = CityBox.Text;
+                    Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
+
+                    Task Task = new Task(A, C, Parameters, new Time());
+
+                    Log Log = new Log(Task);
+
+                    if (urlValidator.isValid(Task.Parameters.Url) && mailValidator.isValid(Task.Parameters.Mail))
                     {
-                        db.Tasks.Add(Task);
-                        db.SaveChanges();
+                        ListofTask.Add(Task);
+                        TaskBox.Items.Add(Task);
+                        TaskBox.Items.Refresh();
+
+                        /* dodawanie tasków do bazy danych*/
+                        using (var db = new JTTTDbContext())
+                        {
+                            db.Tasks.Add(Task);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+
+                if (ActionShow.IsSelected)
+                {
+                    var C = ConditionsComboBox.SelectedItem as Condition;
+                    var A = new Action_show();
+
+                    Parameters.Key.Name = KeyBox.Text;
+                    Parameters.Url.Address = URLBox.Text;
+                    Parameters.Mail.Address = MailBox.Text;
+                    Parameters.City.Name = CityBox.Text;
+                    Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
+
+                    Task Task = new Task(A, C, Parameters, new Time());
+
+                    Log Log = new Log(Task);
+
+                    if (urlValidator.isValid(Task.Parameters.Url) && mailValidator.isValid(Task.Parameters.Mail))
+                    {
+                        ListofTask.Add(Task);
+                        TaskBox.Items.Add(Task);
+                        TaskBox.Items.Refresh();
+
+                        /* dodawanie tasków do bazy danych*/
+                        using (var db = new JTTTDbContext())
+                        {
+                            db.Tasks.Add(Task);
+                            db.SaveChanges();
+                        }
                     }
                 }
             }
 
-            if (TabItem2.IsSelected)
+            if (TabCondWeather.IsSelected)
             {
-                var C = new Condition_weather() as Condition;
-                var A = ActionsComboBox.SelectedItem as Action;
-
-                Parameters.Key.Name = KeyBox.Text;
-                Parameters.Url.Address = URLBox.Text;
-                Parameters.Mail.Address = MailBox.Text;
-                Parameters.City.Name = CityBox.Text;
-                Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
-
-                Task Task = new Task(A, C, Parameters, new Time());
-
-                Log Log = new Log(Task);
-
-                if (mailValidator.isValid(Task.Parameters.Mail))
+                if (ActionSend.IsSelected)
                 {
-                    ListofTask.Add(Task);
-                    TaskBox.Items.Add(Task);
-                    TaskBox.Items.Refresh();
+                    var C = new Condition_weather();
+                    var A = ActionsComboBox.SelectedItem as Action;
 
-                    /* dodawanie tasków do bazy danych*/
-                    using (var db = new JTTTDbContext())
+                    Parameters.Key.Name = KeyBox.Text;
+                    Parameters.Url.Address = URLBox.Text;
+                    Parameters.Mail.Address = MailBox.Text;
+                    Parameters.City.Name = CityBox.Text;
+                    Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
+
+                    Task Task = new Task(A, C, Parameters, new Time());
+
+                    Log Log = new Log(Task);
+
+                    if (mailValidator.isValid(Task.Parameters.Mail))
                     {
-                        db.Tasks.Add(Task);
-                        db.SaveChanges();
+                        ListofTask.Add(Task);
+                        TaskBox.Items.Add(Task);
+                        TaskBox.Items.Refresh();
+
+                        /* dodawanie tasków do bazy danych*/
+                        using (var db = new JTTTDbContext())
+                        {
+                            db.Tasks.Add(Task);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+
+                if (ActionShow.IsSelected)
+                {
+                    var C = new Condition_weather();
+                    var A = new Action_show();
+
+                    Parameters.Key.Name = KeyBox.Text;
+                    Parameters.Url.Address = URLBox.Text;
+                    Parameters.Mail.Address = MailBox.Text;
+                    Parameters.City.Name = CityBox.Text;
+                    Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
+
+                    Task Task = new Task(A, C, Parameters, new Time());
+
+                    Log Log = new Log(Task);
+
+                    if (mailValidator.isValid(Task.Parameters.Mail))
+                    {
+                        ListofTask.Add(Task);
+                        TaskBox.Items.Add(Task);
+                        TaskBox.Items.Refresh();
+
+                        /* dodawanie tasków do bazy danych*/
+                        using (var db = new JTTTDbContext())
+                        {
+                            db.Tasks.Add(Task);
+                            db.SaveChanges();
+                        }
                     }
                 }
             }
         }
+
 
         private void Run_Click(object sender, RoutedEventArgs e)
         {

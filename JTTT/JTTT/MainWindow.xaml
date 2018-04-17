@@ -6,29 +6,25 @@
         xmlns:local="clr-namespace:JTTT"
         mc:Ignorable="d"
         Loaded="Window_Loaded"
-        Title="JTTT" Height="306" Width="640">
+        Title="JTTT" Height="351.778" Width="640">
     <Grid>
-        <TextBox x:Name="Key" HorizontalAlignment="Left" Height="20" Margin="89,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="xiaomi"/>
-        <TextBlock HorizontalAlignment="Left" Margin="33,141,0,0" TextWrapping="Wrap" Text="Key" VerticalAlignment="Top" RenderTransformOrigin="0.753,4.031"/>
-        <TextBox x:Name="Mail" HorizontalAlignment="Left" Height="20" Margin="89,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="wiemichal@wp.pl"/>
-        <TextBlock HorizontalAlignment="Left" Margin="33,170,0,0" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Top"/>
-        <Button Content="Add" HorizontalAlignment="Left" Margin="213,240,0,0" VerticalAlignment="Top" Width="75" Click="Add_Click"/>
+        <Button Content="Add" HorizontalAlignment="Left" Margin="214,293,0,0" VerticalAlignment="Top" Width="75" Click="Add_Click"/>
         <TextBlock x:Name="error" HorizontalAlignment="Left" Margin="77,4,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Foreground="Red" FontWeight="Bold" Visibility="Hidden"/>
-        <ComboBox x:Name="ActionsComboBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="88,198,0,0" VerticalAlignment="Top" Width="201">
+        <ComboBox x:Name="ActionsComboBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="88,198,0,0" VerticalAlignment="Top" Width="201" Visibility="Hidden">
             <!--  <ComboBoxItem Content="Send e-mail" HorizontalAlignment="Left" Width="228"/>-->
         </ComboBox>
-        <Label Content="Action" HorizontalAlignment="Left" Margin="29,196,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="TaskListBox"  HorizontalAlignment="Left" Height="142" Margin="327,77,0,0" VerticalAlignment="Top" Width="271" RenderTransformOrigin="0.26,-0.048"/>
-        <Button Content="Run!" HorizontalAlignment="Left" Margin="327,238,0,0" VerticalAlignment="Top" Width="64" Click="Run_Click"/>
-        <Button Content="Serialize" HorizontalAlignment="Left" Margin="465,238,0,0" VerticalAlignment="Top" Click="Serialize_Click" Width="64"/>
-        <Button Content="Clear" HorizontalAlignment="Left" Margin="396,238,0,0" VerticalAlignment="Top" Width="64" Click="Clear_Click"/>
-        <Button Content="Deserialize" HorizontalAlignment="Left" Margin="534,238,0,0" VerticalAlignment="Top" Click="Deserialize_Click" Width="64"/>
-        <Button Content="Pogoda" HorizontalAlignment="Left" Margin="32,240,0,0" VerticalAlignment="Top" Width="75" Click="Weather"/>
-        <TabControl HorizontalAlignment="Left" Height="124" VerticalAlignment="Top" Width="296" RenderTransformOrigin="1.06,0.59" Margin="10,10,0,0">
-            <TabItem x:Name="site" Header="Check site">
+        <Label Content="Action" HorizontalAlignment="Left" Margin="29,196,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+        <ListBox x:Name="TaskListBox"  HorizontalAlignment="Left" Height="241" Margin="327,32,0,0" VerticalAlignment="Top" Width="271" RenderTransformOrigin="0.26,-0.048"/>
+        <Button Content="Run!" HorizontalAlignment="Left" Margin="328,291,0,0" VerticalAlignment="Top" Width="64" Click="Run_Click"/>
+        <Button Content="Serialize" HorizontalAlignment="Left" Margin="466,291,0,0" VerticalAlignment="Top" Click="Serialize_Click" Width="64"/>
+        <Button Content="Clear" HorizontalAlignment="Left" Margin="397,291,0,0" VerticalAlignment="Top" Width="64" Click="Clear_Click"/>
+        <Button Content="Deserialize" HorizontalAlignment="Left" Margin="535,291,0,0" VerticalAlignment="Top" Click="Deserialize_Click" Width="64"/>
+        <Button Content="Pogoda" HorizontalAlignment="Left" Margin="33,293,0,0" VerticalAlignment="Top" Width="75" Click="Weather"/>
+        <TabControl HorizontalAlignment="Left" Height="114" VerticalAlignment="Top" Width="296" RenderTransformOrigin="1.06,0.59" Margin="10,25,0,0">
+            <TabItem x:Name="TabCondSite" Header="Check site">
                 <Grid Background="#FFE5E5E5" Margin="0,-2,1.333,1">
-                    <TextBox x:Name="URL" HorizontalAlignment="Left" Height="20" Margin="77,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="http://pepper.pl"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="21,45,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top"/>
+                    <TextBox x:Name="URL" HorizontalAlignment="Left" Height="20" Margin="77,17,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="http://pepper.pl"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="21,18,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top"/>
                     <DockPanel Margin="77,14,9,21.333">
                         <Grid Width="230">
                             <StackPanel Orientation="Vertical">
@@ -36,13 +32,15 @@
                             </StackPanel>
                         </Grid>
                     </DockPanel>
-                    <Label Content="Condition" HorizontalAlignment="Left" Margin="16,12,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="ConditionsComboBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="77,14,0,0" VerticalAlignment="Top" Width="200">
+                    <Label Content="Condition" HorizontalAlignment="Left" Margin="16,12,0,0" VerticalAlignment="Top" Visibility="Hidden"/>
+                    <ComboBox x:Name="ConditionsComboBox" SelectedIndex="0" HorizontalAlignment="Left" Margin="77,14,0,0" VerticalAlignment="Top" Width="200" Visibility="Hidden">
                         <!--<ComboBoxItem Content="Check image description on site" HorizontalAlignment="Left" Width="228"/>-->
                     </ComboBox>
+                    <TextBlock HorizontalAlignment="Left" Margin="21,50,0,0" TextWrapping="Wrap" Text="Key" VerticalAlignment="Top" RenderTransformOrigin="0.753,4.031"/>
+                    <TextBox x:Name="Key" HorizontalAlignment="Left" Height="20" Margin="77,49,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="xiaomi"/>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="weather" Header="Check weather" Margin="-2.333,-2,-1.667,0">
+            <TabItem x:Name="TabCondWeather" Header="Check weather" Margin="-2.333,-2,-1.667,0">
                 <Grid Background="#FFE5E5E5">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="39*"/>
@@ -53,6 +51,17 @@
                     <TextBlock HorizontalAlignment="Left" Margin="19,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Grid.ColumnSpan="2"><Run Text="Temp["/><Run Text="*"/><Run Text="C]"/><LineBreak/><Run/></TextBlock>
                     <TextBox x:Name="Temp" HorizontalAlignment="Left" Height="20" Margin="32.667,47,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
                 </Grid>
+            </TabItem>
+        </TabControl>
+        <TabControl HorizontalAlignment="Left" Height="118" Margin="10,155,0,0" VerticalAlignment="Top" Width="296">
+            <TabItem x:Name="ActionSend" Header="Send image">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="Mail" HorizontalAlignment="Left" Height="20" Margin="76,22,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="wiemichal@wp.pl"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="20,23,0,0" TextWrapping="Wrap" Text="Mail" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="ActionShow" Header="Show image">
+                <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
     </Grid>

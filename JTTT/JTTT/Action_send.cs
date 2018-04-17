@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 namespace JTTT
 {
    // [Table("Action_imgs")]
-    class Action_img : Action
+    class Action_send : Action
     {
         protected string fromMail = "amadi@scz.pl";
 
-        public Action_img()
+        public Action_send()
         {
 
         }

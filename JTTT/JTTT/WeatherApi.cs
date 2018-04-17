@@ -63,10 +63,11 @@ namespace JTTT
             return GetTemperature();
         }
 
-        public BitmapImage GetIcon(){
+        public BitmapImage GetIcon()
+        {
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
-            bitmap.UriSource = new Uri("http://openweathermap.org/img/w/"+_values.Weather[0].Icon+".png", UriKind.Absolute); //?
+            bitmap.UriSource = new Uri("http://openweathermap.org/img/w/" + _values.Weather[0].Icon + ".png", UriKind.Absolute); //?
             bitmap.EndInit();
             return bitmap;
         }

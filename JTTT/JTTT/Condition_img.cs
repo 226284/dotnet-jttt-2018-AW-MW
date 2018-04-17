@@ -22,7 +22,7 @@ namespace JTTT
         {
             WebClient client = new WebClient();
             var reply = client.DownloadString(parameters.Url.Address);
-
+           
             var web = new HtmlWeb();
             var doc = web.Load(parameters.Url.Address);
 
@@ -34,9 +34,11 @@ namespace JTTT
                 if (i.GetAttributeValue("alt", "").ToLower().Contains(parameters.Key.Name.ToLower()))
                 {
                     string path = @"img.jpg";
+                    string pathtxt = @"text.txt";
                     using (var client2 = new WebClient())
                     {
                         client.DownloadFile(i.GetAttributeValue("src", ""), path);
+                        System.IO.File.WriteAllText(pathtxt, i.GetAttributeValue("alt", ""));
                     }
                     break;
                     //return true; //poprawić!
