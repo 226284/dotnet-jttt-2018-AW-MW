@@ -15,5 +15,11 @@ namespace JTTT
         {
             return (Value - 273.15).ToString() + "°C";
         }
+
+        public double CelsiusVal()
+        {
+            return (Value - 273.15);
+
+        }
     }
 }

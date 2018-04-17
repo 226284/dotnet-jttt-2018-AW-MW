@@ -25,7 +25,7 @@
         <Button Content="Deserialize" HorizontalAlignment="Left" Margin="534,238,0,0" VerticalAlignment="Top" Click="Deserialize_Click" Width="64"/>
         <Button Content="Pogoda" HorizontalAlignment="Left" Margin="32,240,0,0" VerticalAlignment="Top" Width="75" Click="Weather"/>
         <TabControl HorizontalAlignment="Left" Height="124" VerticalAlignment="Top" Width="296" RenderTransformOrigin="1.06,0.59" Margin="10,10,0,0">
-            <TabItem Header="Check site">
+            <TabItem x:Name="site" Header="Check site">
                 <Grid Background="#FFE5E5E5" Margin="0,-2,1.333,1">
                     <TextBox x:Name="URL" HorizontalAlignment="Left" Height="20" Margin="77,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Text="http://pepper.pl"/>
                     <TextBlock HorizontalAlignment="Left" Margin="21,45,0,0" TextWrapping="Wrap" Text="URL" VerticalAlignment="Top"/>
@@ -42,12 +42,16 @@
                     </ComboBox>
                 </Grid>
             </TabItem>
-            <TabItem Header="Check weather" Margin="-2.333,-2,-1.667,0">
+            <TabItem x:Name="weather" Header="Check weather" Margin="-2.333,-2,-1.667,0">
                 <Grid Background="#FFE5E5E5">
-                    <TextBox x:Name="City" HorizontalAlignment="Left" Height="20" Margin="72,13,0,0" TextWrapping="Wrap" Text="Wrocław" VerticalAlignment="Top" Width="200"/>
-                    <TextBlock HorizontalAlignment="Left" Margin="19,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20"><Run Text="City"/><LineBreak/><Run/></TextBlock>
-                    <TextBlock HorizontalAlignment="Left" Margin="19,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20"><Run Text="Temp["/><Run Text="*"/><Run Text="C]"/><LineBreak/><Run/></TextBlock>
-                    <TextBox x:Name="Temp" HorizontalAlignment="Left" Height="20" Margin="72,47,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="200"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="39*"/>
+                        <ColumnDefinition Width="251*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox x:Name="City" HorizontalAlignment="Left" Height="20" Margin="32.667,13,0,0" TextWrapping="Wrap" Text="Wrocław" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
+                    <TextBlock HorizontalAlignment="Left" Margin="19,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Grid.ColumnSpan="2"><Run Text="City"/><LineBreak/><Run/></TextBlock>
+                    <TextBlock HorizontalAlignment="Left" Margin="19,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="20" Grid.ColumnSpan="2"><Run Text="Temp["/><Run Text="*"/><Run Text="C]"/><LineBreak/><Run/></TextBlock>
+                    <TextBox x:Name="Temp" HorizontalAlignment="Left" Height="20" Margin="32.667,47,0,0" TextWrapping="Wrap" Text="20" VerticalAlignment="Top" Width="200" Grid.Column="1"/>
                 </Grid>
             </TabItem>
         </TabControl>

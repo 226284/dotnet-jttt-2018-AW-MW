@@ -50,6 +50,9 @@ namespace JTTT
 
         private CheckBox PicBox;
 
+        private TabItem TabItem1;
+        private TabItem TabItem2;
+
         private File file;
 
         private UrlValidator urlValidator;
@@ -75,6 +78,9 @@ namespace JTTT
             PicBox = (CheckBox)this.FindName("Pic");
 
             TaskBox = (ListBox)this.FindName("TaskListBox");
+
+            TabItem1 = (TabItem)this.FindName("site");
+            TabItem2 = (TabItem)this.FindName("weather");
 
             ListofConditions = new List<Condition>();
             ListofActions = new List<Action>();
@@ -105,17 +111,10 @@ namespace JTTT
             /*przywracanie tasków z bazy danynch*/
             using (var db = new JTTTDbContext())
             {
-                Task tmp = new Task();
-                foreach (var t in db.Tasks)
+                foreach (var t in db.Tasks.Include("Action").Include("Condition").Include("Parameters"))
                 {
-                    tmp.Action = t.Action;
-                    tmp.Condition = t.Condition;
-                    tmp.Time = t.Time;
-
-                    //tmp.Parameters.ToString();
-
-                    TaskBox.Items.Add(tmp);
-                    ListofTask.Add(tmp);
+                    TaskBox.Items.Add(t);
+                    ListofTask.Add(t);
                     TaskBox.Items.Refresh();
                 }
             }
@@ -128,30 +127,63 @@ namespace JTTT
 
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
-            var C = ConditionsComboBox.SelectedItem as Condition;
-            var A = ActionsComboBox.SelectedItem as Action;
-
-            Parameters.Key.Name = KeyBox.Text;
-            Parameters.Url.Address = URLBox.Text;
-            Parameters.Mail.Address = MailBox.Text;
-            Parameters.City.Name = CityBox.Text;
-            Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
-
-            Task Task = new Task(A,C,Parameters,new Time());
-            
-            Log Log = new Log(Task);
-
-            if (urlValidator.isValid(Task.Parameters.Url) && mailValidator.isValid(Task.Parameters.Mail))
+            if (TabItem1.IsSelected)
             {
-                ListofTask.Add(Task);
-                TaskBox.Items.Add(Task);
-                TaskBox.Items.Refresh();
+                var C = ConditionsComboBox.SelectedItem as Condition;
+                var A = ActionsComboBox.SelectedItem as Action;
 
-                /* dodawanie tasków do bazy danych*/
-                using (var db = new JTTTDbContext())
+                Parameters.Key.Name = KeyBox.Text;
+                Parameters.Url.Address = URLBox.Text;
+                Parameters.Mail.Address = MailBox.Text;
+                Parameters.City.Name = CityBox.Text;
+                Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
+
+                Task Task = new Task(A, C, Parameters, new Time());
+
+                Log Log = new Log(Task);
+
+                if (urlValidator.isValid(Task.Parameters.Url) && mailValidator.isValid(Task.Parameters.Mail))
                 {
-                    db.Tasks.Add(Task);
-                    db.SaveChanges();
+                    ListofTask.Add(Task);
+                    TaskBox.Items.Add(Task);
+                    TaskBox.Items.Refresh();
+
+                    /* dodawanie tasków do bazy danych*/
+                    using (var db = new JTTTDbContext())
+                    {
+                        db.Tasks.Add(Task);
+                        db.SaveChanges();
+                    }
+                }
+            }
+
+            if (TabItem2.IsSelected)
+            {
+                var C = new Condition_weather() as Condition;
+                var A = ActionsComboBox.SelectedItem as Action;
+
+                Parameters.Key.Name = KeyBox.Text;
+                Parameters.Url.Address = URLBox.Text;
+                Parameters.Mail.Address = MailBox.Text;
+                Parameters.City.Name = CityBox.Text;
+                Parameters.Temperature.Value = Double.Parse(TemperatureBox.Text);
+
+                Task Task = new Task(A, C, Parameters, new Time());
+
+                Log Log = new Log(Task);
+
+                if (mailValidator.isValid(Task.Parameters.Mail))
+                {
+                    ListofTask.Add(Task);
+                    TaskBox.Items.Add(Task);
+                    TaskBox.Items.Refresh();
+
+                    /* dodawanie tasków do bazy danych*/
+                    using (var db = new JTTTDbContext())
+                    {
+                        db.Tasks.Add(Task);
+                        db.SaveChanges();
+                    }
                 }
             }
         }

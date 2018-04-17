@@ -5,10 +5,11 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace JTTT
 {
-    class Condition_weather: Condition
+    class Condition_weather : Condition
     {
         public Condition_weather()
         {
@@ -17,28 +18,14 @@ namespace JTTT
 
         public override bool Check(Parameters parameters)
         {
-            WebClient client = new WebClient();
-            var reply = client.DownloadString(parameters.Url.Address);
-
-            var web = new HtmlWeb();
-            var doc = web.Load(parameters.Url.Address);
-
-
-            var nodes = doc.DocumentNode.Descendants("img");
-
-            foreach (var i in nodes)
-            {
-                if (i.GetAttributeValue("alt", "").ToLower().Contains(parameters.Key.Name.ToLower()))
-                {
-                    string path = @"img.jpg";
-                    using (var client2 = new WebClient())
-                    {
-                        client.DownloadFile(i.GetAttributeValue("src", ""), path);
-                    }
-                    break;
-                    //return true; //poprawić!
-                }
-            }
+            var api = new WeatherApi();
+            City city = new City();
+            city.Name = parameters.City.Name;
+            // zapis do pliku
+            if (api.GetTemperature(city).CelsiusVal() < parameters.Temperature.Value) { return false; }
+            string text_path = @"text.txt";
+            System.IO.File.WriteAllText(text_path, "Temperatura: " + api.GetTemperature(city).toCelsius() + "\n");
+            //WeatherIcon.Source = api.GetIcon();
 
             return true;
         }

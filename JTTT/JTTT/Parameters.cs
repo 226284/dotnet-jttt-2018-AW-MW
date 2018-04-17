@@ -16,8 +16,17 @@ namespace JTTT
         // weather
         public City City { get; set; }
         public Temperature Temperature { get; set; }
-        //public Parameters() { }
-          
+
+
+        public Parameters()
+        {
+            Url = new Url();
+            Key = new Key();
+            Mail = new Mail();
+            City = new City();
+            Temperature = new Temperature();
+        }
+
         public override string ToString()
         {
             return String.Format("Url: {0} Key: {1} Mail: {2} City: {3} Temperature: {4}", Url, Key, Mail, City, Temperature);
