@@ -99,7 +99,6 @@
     <Compile Include="Dispatcher.cs" />
     <Compile Include="IDispatcher.cs" />
     <Compile Include="IListofTask.cs" />
-    <Compile Include="IUrl.cs" />
     <Compile Include="Key.cs" />
     <Compile Include="ListofTask.cs" />
     <Compile Include="Mail.cs" />

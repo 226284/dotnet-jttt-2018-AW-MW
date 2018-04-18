@@ -29,7 +29,7 @@ namespace JTTT
 
         public override string ToString()
         {
-            return String.Format("Url: {0} Key: {1} Mail: {2} City: {3} Temperature: {4}", Url, Key, Mail, City, Temperature);
+            return String.Format("Url: {0} Key: {1} Mail: {2} City: {3} Temperature: {4}", Url.Address, Key.Name, Mail.Address, City.Name, Temperature.Value);
         }
     }
 }
