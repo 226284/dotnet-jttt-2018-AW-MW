@@ -72,5 +72,14 @@ namespace JTTT
             return bitmap;
         }
 
+        public void SaveIcon()
+        {
+            string path = @"img.jpg";
+            using (var client = new WebClient())
+            {
+                client.DownloadFile("http://openweathermap.org/img/w/" + _values.Weather[0].Icon + ".png", path);
+            }
+        }
+
     }
 }

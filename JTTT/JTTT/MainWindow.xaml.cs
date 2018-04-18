@@ -168,7 +168,7 @@ namespace JTTT
 
                     Log Log = new Log(Task);
 
-                    if (urlValidator.isValid(Task.Parameters.Url) && mailValidator.isValid(Task.Parameters.Mail))
+                    if (urlValidator.isValid(Task.Parameters.Url))
                     {
                         ListofTask.Add(Task);
                         TaskBox.Items.Add(Task);

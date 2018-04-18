@@ -21,6 +21,7 @@ namespace JTTT
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
             bi.UriSource = new Uri(System.IO.Directory.GetCurrentDirectory() + "/img.jpg");
+            bi.CacheOption = BitmapCacheOption.OnLoad;
             bi.EndInit();
 
             ShowWindow showWindow = new ShowWindow();

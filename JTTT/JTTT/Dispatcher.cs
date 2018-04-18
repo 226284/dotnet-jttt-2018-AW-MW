@@ -23,7 +23,7 @@ namespace JTTT
                 if (t.Condition.Check(t.Parameters)) t.Action.Job(t.Parameters);
                 else
                 {
-                    MessageBox.Show("Error occured", "Error");
+                    //MessageBox.Show("Error occured", "Error");
                     return false;
                 }
 

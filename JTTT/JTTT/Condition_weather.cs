@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.Drawing;
 
 namespace JTTT
 {
@@ -24,8 +25,9 @@ namespace JTTT
             // zapis do pliku
             if (api.GetTemperature(city).CelsiusVal() < parameters.Temperature.Value) { return false; }
             string text_path = @"text.txt";
-            System.IO.File.WriteAllText(text_path, "Temperatura: " + api.GetTemperature(city).toCelsius() + "\n");
-            //WeatherIcon.Source = api.GetIcon();
+            System.IO.File.WriteAllText(text_path, "Miasto: " + parameters.City.Name + ", Temperatura: " + api.GetTemperature(city).toCelsius() + "\n");
+
+            api.SaveIcon();
 
             return true;
         }
