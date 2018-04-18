@@ -28,6 +28,7 @@ namespace JTTT
             showWindow.ShowText.Text = System.IO.File.ReadAllText("text.txt");
             showWindow.ShowImg.Source = bi;
             showWindow.Show();
+
         }
 
         public override string ToString()

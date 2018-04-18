@@ -20,8 +20,8 @@ namespace JTTT
 
         public override bool Check(Parameters parameters)
         {
-            WebClient client = new WebClient();
-            var reply = client.DownloadString(parameters.Url.Address);
+            //WebClient client = new WebClient();
+            //var reply = client.DownloadString(parameters.Url.Address);
            
             var web = new HtmlWeb();
             var doc = web.Load(parameters.Url.Address);
@@ -35,7 +35,7 @@ namespace JTTT
                 {
                     string path = @"img.jpg";
                     string pathtxt = @"text.txt";
-                    using (var client2 = new WebClient())
+                    using (var client = new WebClient())
                     {
                         client.DownloadFile(i.GetAttributeValue("src", ""), path);
                         System.IO.File.WriteAllText(pathtxt, i.GetAttributeValue("alt", ""));
