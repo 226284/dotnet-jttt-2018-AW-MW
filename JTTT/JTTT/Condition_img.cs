@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace JTTT
 {
-    //  [Table("Condition_imgs")]
+
     class Condition_img : Condition
     {
         public Condition_img()

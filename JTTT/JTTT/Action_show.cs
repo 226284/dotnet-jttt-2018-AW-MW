@@ -24,7 +24,6 @@ namespace JTTT
             bi.CacheOption = BitmapCacheOption.OnLoad;
             bi.EndInit();
 
-            Console.WriteLine(parameters.Description);
             ShowWindow showWindow = new ShowWindow();
 
             showWindow.ShowText.Text = parameters.Description;

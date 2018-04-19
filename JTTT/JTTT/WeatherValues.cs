@@ -1,10 +1,4 @@
-﻿// To parse this JSON data, add NuGet 'Newtonsoft.Json' then do:
-//
-//    using JTTT;
-//
-//    var weatherValues = WeatherValues.FromJson(jsonString);
-
-namespace JTTT
+﻿namespace JTTT
 {
     using System;
     using System.Collections.Generic;
@@ -80,21 +74,4 @@ namespace JTTT
     {
         public static WeatherValues FromJson(string json) => JsonConvert.DeserializeObject<WeatherValues>(json);
     }
-
-   /* public static class Serialize
-    {
-        public static string ToJson(this WeatherValues self) => JsonConvert.SerializeObject(self, JTTT.Converter.Settings);
-    }
-
-    internal class Converter
-    {
-        public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-        {
-            MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-            DateParseHandling = DateParseHandling.None,
-            Converters = {
-                new IsoDateTimeConverter { DateTimeStyles = DateTimeStyles.AssumeUniversal }
-            },
-        };
-    }*/
 }
