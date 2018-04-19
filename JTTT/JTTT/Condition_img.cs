@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text;
@@ -15,14 +16,12 @@ namespace JTTT
     {
         public Condition_img()
         {
-
+            
         }
 
-        public override bool Check(Parameters parameters)
+        public async override Task<bool> Check(Parameters parameters)
         {
-            //WebClient client = new WebClient();
-            //var reply = client.DownloadString(parameters.Url.Address);
-           
+            Console.WriteLine(parameters.ToString());
             var web = new HtmlWeb();
             var doc = web.Load(parameters.Url.Address);
 
@@ -33,12 +32,14 @@ namespace JTTT
             {
                 if (i.GetAttributeValue("alt", "").ToLower().Contains(parameters.Key.Name.ToLower()))
                 {
-                    string path = @"img.jpg";
+                    string path = @"tmp/img"+parameters.Id+".jpg";
                     string pathtxt = @"text.txt";
                     using (var client = new WebClient())
                     {
-                        client.DownloadFile(i.GetAttributeValue("src", ""), path);
-                        System.IO.File.WriteAllText(pathtxt, i.GetAttributeValue("alt", ""));
+                        Console.WriteLine(i.GetAttributeValue("src", ""));
+                        await client.DownloadFileTaskAsync(new Uri(i.GetAttributeValue("src", "")), path);
+                        //System.IO.File.WriteAllText(pathtxt, i.GetAttributeValue("alt", ""));
+                        parameters.Description = i.GetAttributeValue("alt", "");
                     }
                     break;
                     //return true; //poprawić!

@@ -16,20 +16,22 @@ namespace JTTT
             ListofTask = listofTask;
         }
 
-        public bool Run()
+        public async void Run()
         {
             foreach (Task t in ListofTask.All())
             {
-                if (t.Condition.Check(t.Parameters)) t.Action.Job(t.Parameters);
+
+                bool check = await t.Condition.Check(t.Parameters);
+                if (check) t.Action.Job(t.Parameters);
                 else
                 {
                     //MessageBox.Show("Error occured", "Error");
-                    return false;
+                   // return false;
                 }
 
             }
             MessageBox.Show("Done succesfully", "Info");
-            return true;
+           // return true;
         }
     }
 }

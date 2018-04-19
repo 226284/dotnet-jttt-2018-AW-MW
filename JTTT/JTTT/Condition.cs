@@ -12,7 +12,7 @@ namespace JTTT
 
         public Condition() { }
 
-        public virtual bool Check(Parameters _parameters)
+        public async virtual Task<bool> Check(Parameters _parameters)
         {
             return false; // checks if there is condition in the bracket
         }

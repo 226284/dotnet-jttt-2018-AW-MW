@@ -17,7 +17,7 @@ namespace JTTT
 
         }
 
-        public override bool Check(Parameters parameters)
+        public async override Task<bool> Check(Parameters parameters)
         {
             var api = new WeatherApi();
             City city = new City();
@@ -25,9 +25,9 @@ namespace JTTT
             // zapis do pliku
             if (api.GetTemperature(city).CelsiusVal() < parameters.Temperature.Value) { return false; }
             string text_path = @"text.txt";
-            System.IO.File.WriteAllText(text_path, "Miasto: " + parameters.City.Name + ", Temperatura: " + api.GetTemperature(city).toCelsius() + "\n");
-
-            api.SaveIcon();
+            //System.IO.File.WriteAllText(text_path, "Miasto: " + parameters.City.Name + ", Temperatura: " + api.GetTemperature(city).toCelsius() + "\n");
+            parameters.Description = "Miasto: " + parameters.City.Name + ", Temperatura: " + api.GetTemperature(city).toCelsius() + "\n";
+            api.SaveIcon(parameters.Id);
 
             return true;
         }

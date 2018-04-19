@@ -32,16 +32,13 @@ namespace JTTT
                 Text = @"Hey YourName,
 
                     We found your key!
-
-                    Have nice day!
-
-                    -- JTTT"
+                    " + parameters.Description + " \n Have nice day! \n -- JTTT"
             };
 
             var multipart = new Multipart("mixed");
             multipart.Add(body);
 
-            string path = @"img.jpg";
+            string path = @"tmp/img" + parameters.Id + ".jpg";
 
             var attachment = new MimePart("image", "jpg")
             {

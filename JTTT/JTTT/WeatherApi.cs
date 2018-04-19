@@ -72,9 +72,9 @@ namespace JTTT
             return bitmap;
         }
 
-        public void SaveIcon()
+        public void SaveIcon(int id)
         {
-            string path = @"img.jpg";
+            string path = @"tmp/img" +id+".jpg";
             using (var client = new WebClient())
             {
                 client.DownloadFile("http://openweathermap.org/img/w/" + _values.Weather[0].Icon + ".png", path);

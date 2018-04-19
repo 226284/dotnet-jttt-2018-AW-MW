@@ -10,7 +10,7 @@ namespace JTTT
     class JTTTDbContext : DbContext
     {
         public JTTTDbContext()
-            : base("JTTT28")
+            : base("JTTT30")
         {
 
         }

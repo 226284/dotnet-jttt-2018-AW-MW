@@ -90,7 +90,7 @@ namespace JTTT
 
             ListofTask = new ListofTask();
 
-            Parameters = new Parameters();
+          //  Parameters = new Parameters();
 
             foreach (Task t in ListofTask.All())
             {
@@ -121,12 +121,15 @@ namespace JTTT
 
         private void Add_Click(object sender, RoutedEventArgs ev)
         {
+            Parameters = new Parameters();
             if (TabCondSite.IsSelected)
             {
                 if (ActionSend.IsSelected)
                 {
                     var C = ConditionsComboBox.SelectedItem as Condition;
                     var A = ActionsComboBox.SelectedItem as Action;
+
+
 
                     Parameters.Key.Name = KeyBox.Text;
                     Parameters.Url.Address = URLBox.Text;

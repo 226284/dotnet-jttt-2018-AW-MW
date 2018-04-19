@@ -20,12 +20,17 @@ namespace JTTT
         {
             BitmapImage bi = new BitmapImage();
             bi.BeginInit();
-            bi.UriSource = new Uri(System.IO.Directory.GetCurrentDirectory() + "/img.jpg");
+            bi.UriSource = new Uri(System.IO.Directory.GetCurrentDirectory() + "/tmp/img" + parameters.Id+".jpg");
             bi.CacheOption = BitmapCacheOption.OnLoad;
+            //bi.Freeze();
             bi.EndInit();
 
+            bi.Freeze();
+
+            Console.WriteLine(parameters.Description);
             ShowWindow showWindow = new ShowWindow();
-            showWindow.ShowText.Text = System.IO.File.ReadAllText("text.txt");
+            
+            showWindow.ShowText.Text = parameters.Description;//System.IO.File.ReadAllText("text.txt");
             showWindow.ShowImg.Source = bi;
             showWindow.Show();
 

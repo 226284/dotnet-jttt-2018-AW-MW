@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace JTTT
         // weather
         public City City { get; set; }
         public Temperature Temperature { get; set; }
+        [NotMapped]
+        public string Description { get; set; }
 
 
         public Parameters()
@@ -29,7 +32,7 @@ namespace JTTT
 
         public override string ToString()
         {
-            return String.Format("Url: {0} Key: {1} Mail: {2} City: {3} Temperature: {4}", Url.Address, Key.Name, Mail.Address, City.Name, Temperature.Value);
+            return String.Format("Url: {0} Key: {1} Mail: {2} City: {3} Temperature: {4} Opis: {5}", Url.Address, Key.Name, Mail.Address, City.Name, Temperature.Value, Description);
         }
     }
 }
