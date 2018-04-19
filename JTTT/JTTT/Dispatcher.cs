@@ -23,12 +23,6 @@ namespace JTTT
 
                 bool check = await t.Condition.Check(t.Parameters);
                 if (check) t.Action.Job(t.Parameters);
-                else
-                {
-                    //MessageBox.Show("Error occured", "Error");
-                    // return false;
-                }
-
             }
             MessageBox.Show("Done succesfully", "Info");
         }
