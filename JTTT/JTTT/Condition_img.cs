@@ -33,7 +33,6 @@ namespace JTTT
                     string path = @"tmp/img" + parameters.Id + ".jpg";
                     using (var client = new WebClient())
                     {
-                        Console.WriteLine(i.GetAttributeValue("src", ""));
                         await client.DownloadFileTaskAsync(new Uri(i.GetAttributeValue("src", "")), path);
                         parameters.Description = i.GetAttributeValue("alt", "");
                     }
