@@ -8,7 +8,6 @@ namespace JTTT
 {
     class Temperature
     {
-        //public int Id { get; set; }
         public double Value { get; set; }
 
         public string toCelsius()

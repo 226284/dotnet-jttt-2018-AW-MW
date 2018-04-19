@@ -8,7 +8,6 @@ namespace JTTT
 {
     interface ICondition
     {
-        // checks the option in the box
         Task<bool> Check(Parameters parameters);
     }
 }

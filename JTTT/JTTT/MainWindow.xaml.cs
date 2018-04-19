@@ -29,7 +29,6 @@ namespace JTTT
     /// </summary>
     public partial class MainWindow : Window
     {
-
         private Dispatcher Dispatcher;
         private ListofTask ListofTask;
 
@@ -43,8 +42,6 @@ namespace JTTT
         private TextBox TemperatureBox;
 
         private TextBlock ErrorBlock;
-
-        //private ComboBox ActionsComboBox;
 
         private ListBox TaskBox;
 
@@ -69,11 +66,8 @@ namespace JTTT
             MailBox = (TextBox)this.FindName("Mail");
             CityBox = (TextBox)this.FindName("City");
             TemperatureBox = (TextBox)this.FindName("Temp");
-
             ErrorBlock = (TextBlock)this.FindName("error");
-
             PicBox = (CheckBox)this.FindName("Pic");
-
             TaskBox = (ListBox)this.FindName("TaskListBox");
 
             ListofConditions = new List<Condition>();
@@ -89,8 +83,6 @@ namespace JTTT
             ActionsComboBox.ItemsSource = ListofActions;
 
             ListofTask = new ListofTask();
-
-          //  Parameters = new Parameters();
 
             foreach (Task t in ListofTask.All())
             {
@@ -128,8 +120,6 @@ namespace JTTT
                 {
                     var C = ConditionsComboBox.SelectedItem as Condition;
                     var A = ActionsComboBox.SelectedItem as Action;
-
-
 
                     Parameters.Key.Name = KeyBox.Text;
                     Parameters.Url.Address = URLBox.Text;
@@ -250,7 +240,6 @@ namespace JTTT
                 }
             }
         }
-
 
         private void Run_Click(object sender, RoutedEventArgs e)
         {

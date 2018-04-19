@@ -17,7 +17,8 @@ namespace JTTT
         // weather
         public City City { get; set; }
         public Temperature Temperature { get; set; }
-        [NotMapped]
+
+        [NotMapped] // tego nie dodajemy
         public string Description { get; set; }
 
 

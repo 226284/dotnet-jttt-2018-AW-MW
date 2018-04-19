@@ -22,10 +22,9 @@ namespace JTTT
             var api = new WeatherApi();
             City city = new City();
             city.Name = parameters.City.Name;
+
             // zapis do pliku
             if (api.GetTemperature(city).CelsiusVal() < parameters.Temperature.Value) { return false; }
-            string text_path = @"text.txt";
-            //System.IO.File.WriteAllText(text_path, "Miasto: " + parameters.City.Name + ", Temperatura: " + api.GetTemperature(city).toCelsius() + "\n");
             parameters.Description = "Miasto: " + parameters.City.Name + ", Temperatura: " + api.GetTemperature(city).toCelsius() + "\n";
             api.SaveIcon(parameters.Id);
 

@@ -16,15 +16,13 @@ namespace JTTT
     {
         public Condition_img()
         {
-            
+
         }
 
         public async override Task<bool> Check(Parameters parameters)
         {
-            Console.WriteLine(parameters.ToString());
             var web = new HtmlWeb();
             var doc = web.Load(parameters.Url.Address);
-
 
             var nodes = doc.DocumentNode.Descendants("img");
 
@@ -32,20 +30,16 @@ namespace JTTT
             {
                 if (i.GetAttributeValue("alt", "").ToLower().Contains(parameters.Key.Name.ToLower()))
                 {
-                    string path = @"tmp/img"+parameters.Id+".jpg";
-                    string pathtxt = @"text.txt";
+                    string path = @"tmp/img" + parameters.Id + ".jpg";
                     using (var client = new WebClient())
                     {
                         Console.WriteLine(i.GetAttributeValue("src", ""));
                         await client.DownloadFileTaskAsync(new Uri(i.GetAttributeValue("src", "")), path);
-                        //System.IO.File.WriteAllText(pathtxt, i.GetAttributeValue("alt", ""));
                         parameters.Description = i.GetAttributeValue("alt", "");
                     }
                     break;
-                    //return true; //poprawić!
                 }
             }
-
             return true;
         }
 

@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace JTTT
 {
-   // [Table("Action_imgs")]
     class Action_send : Action
     {
         protected string fromMail = "amadi@scz.pl";
@@ -58,7 +57,7 @@ namespace JTTT
 
                 mailClient.Connect("scz.pl", 587, SecureSocketOptions.Auto);
 
-                ////Note: only needed if the SMTP server requires authentication
+                ////SMTP server requires authentication
                 mailClient.Authenticate(fromMail, "Amadeusz");
 
                 mailClient.Send(message);

@@ -67,14 +67,14 @@ namespace JTTT
         {
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
-            bitmap.UriSource = new Uri("http://openweathermap.org/img/w/" + _values.Weather[0].Icon + ".png", UriKind.Absolute); //?
+            bitmap.UriSource = new Uri("http://openweathermap.org/img/w/" + _values.Weather[0].Icon + ".png", UriKind.Absolute);
             bitmap.EndInit();
             return bitmap;
         }
 
         public void SaveIcon(int id)
         {
-            string path = @"tmp/img" +id+".jpg";
+            string path = @"tmp/img" + id + ".jpg";
             using (var client = new WebClient())
             {
                 client.DownloadFile("http://openweathermap.org/img/w/" + _values.Weather[0].Icon + ".png", path);

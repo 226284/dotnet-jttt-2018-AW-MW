@@ -13,7 +13,6 @@ namespace JTTT
         public Time()
         {
             time = DateTime.Now.ToString();
-            //Console.WriteLine(time);
         }
     }
 }

@@ -26,12 +26,11 @@ namespace JTTT
                 else
                 {
                     //MessageBox.Show("Error occured", "Error");
-                   // return false;
+                    // return false;
                 }
 
             }
             MessageBox.Show("Done succesfully", "Info");
-           // return true;
         }
     }
 }
