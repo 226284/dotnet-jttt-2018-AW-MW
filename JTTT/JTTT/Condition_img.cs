@@ -19,6 +19,8 @@ namespace JTTT
 
         }
 
+
+
         public async override Task<bool> Check(Parameters parameters)
         {
             var web = new HtmlWeb();
@@ -30,10 +32,16 @@ namespace JTTT
             {
                 if (i.GetAttributeValue("alt", "").ToLower().Contains(parameters.Key.Name.ToLower()))
                 {
+                    Uri Address = null;
+                    if (i.GetAttributeValue("src", "").Contains("http"))
+                        Address = new Uri(i.GetAttributeValue("src", ""));
+                    else
+                        Address = new Uri(parameters.Url.Address + i.GetAttributeValue("src", ""));
+
                     string path = @"tmp/img" + parameters.Id + ".jpg";
                     using (var client = new WebClient())
                     {
-                        await client.DownloadFileTaskAsync(new Uri(i.GetAttributeValue("src", "")), path);
+                        await client.DownloadFileTaskAsync(Address, path);
                         parameters.Description = i.GetAttributeValue("alt", "");
                     }
                     break;
