@@ -1,10 +1,9 @@
 # JTTT
 Jeśli to to to
-Wersja V2.0:
-- rozwijane listy warunku i akcji pozwalające na wybór warunku/listy
-- możliwość dodawania par warunek-akcja do okna zadań
-- możliwość czyszczenia okna zadań
-- serializacja deserializacja danych do pliku lub z pliku
-- okno na pary zadań warunek-akcja które się wyświetlają
-- podział na klasy z metodami wirtualnymi oraz interfejsy według zasad programowania obiektowego SOLID
-- enkapsulacja danych (w wersji V2.1, lub wcześniej jeżeli starczy czasu)
+Wersja V4.0:
+- dodanie opisów do maila
+- otwieranie nowego okna po wciśnięciu przycisku "Pogoda" i możliwość sprawdzenia temperatury dla wybranego miasta
+- możliwość wyboru różnych warunków -> sprawdzanie opisu obrazka + sprawdzanie pogody miasta
+- możliwość wyboru różnych akcji -> wysyłanie maila z opisem i obrazkiem + wyświetlanie opisu i obrazka
+- możliwość krzyżowania ze sobą warunków
+- asynchroniczne wykonywanie warunków i akcji
